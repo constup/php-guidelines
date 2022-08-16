@@ -82,7 +82,7 @@
 
 One of the most popular websites for documenting design patterns in PHP,
 [designpatternsphp.readthedocs.io](https://designpatternsphp.readthedocs.io) presents an example implementation of the
-Factory Method by using Factory classes [[2]()] as if it's the only way of implementing Factory Methods - this is 
+Factory Method by using Factory classes [[2](#2)] as if it's the only way of implementing Factory Methods - this is 
 misleading.
 
 The term "Creator" is used deliberately, instead of the term "Factory". This is because Creators are **not** Factories -
