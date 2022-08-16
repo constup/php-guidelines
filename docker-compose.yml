@@ -1,0 +1,11 @@
+services:
+    constup_php_guidelines:
+        container_name: constup_php_guidelines
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        restart: always
+        ports:
+            - "11480:80"
+        volumes:
+            - ./:/usr/src/app
