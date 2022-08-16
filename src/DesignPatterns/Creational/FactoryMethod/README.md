@@ -155,7 +155,7 @@ including:
 
 One example of an alternative solution, which solves all the problems Factory Methods are trying to solve, but also
 offers more flexibility and avoids many problems Factory Methods have, is available in 
-[AlternativeSolution/README.md](./AlternativeSolution/README.md). 
+[AlternativeSolution](./AlternativeSolution). 
 
 > Please note: This is only **one** example of a better reusable alternative solution and is in no way the only one.
 
