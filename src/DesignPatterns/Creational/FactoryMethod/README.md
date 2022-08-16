@@ -143,7 +143,7 @@ return type is Product Interface.
 
 ## Examples
 
-Several theoretical examples are available in [TheoreticalExamples/README.md](./TheoreticalExamples/README.md) and are 
+Several theoretical examples are available in [TheoreticalExamples](./TheoreticalExamples) and are 
 including:
 
 - [Abstract Creator; internal use of Factory Method](./TheoreticalExamples/README.md#abstract-creator-internal-use-of-a-factory-method)

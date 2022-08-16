@@ -2,9 +2,9 @@
 
 - Design patterns
   - Creational
-    - [Factory Method](../src/DesignPatterns/Creational/FactoryMethod/README.md)
-      - [Theoretical examples](../src/DesignPatterns/Creational/FactoryMethod/TheoreticalExamples/README.md)
-      - [Alternative solution](../src/DesignPatterns/Creational/FactoryMethod/AlternativeSolution/README.md) 
+    - [Factory Method](../src/DesignPatterns/Creational/FactoryMethod)
+      - [Theoretical examples](../src/DesignPatterns/Creational/FactoryMethod/TheoreticalExamples)
+      - [Alternative solution](../src/DesignPatterns/Creational/FactoryMethod/AlternativeSolution) 
 
 ## Links
 
