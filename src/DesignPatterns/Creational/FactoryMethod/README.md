@@ -86,15 +86,15 @@ Factory Method by using Factory classes [[2](#2)] as if it's the only way of imp
 misleading.
 
 The term "Creator" is used deliberately, instead of the term "Factory". This is because Creators are **not** Factories -
-they are usually regular classes with their own purpose and functionality which simply have one or more Factory Methods 
+they are usually regular classes with their own purpose and functionality, which simply have one or more Factory Methods 
 implemented in them. Since Factories are classes (obviously), they **can** be Creators - Factories are a subset of 
 Creators. This is explained in the book _"Design Patterns: Elements of Reusable Object-Oriented Software"_ [[1](#1)] 
 which also provides examples of Creators containing functionality other than creating objects.
 
 The reason for this misunderstanding lies in the fact that Factory Method, as a Design Pattern, is breaking the single
-responsibility of classes. Because of this, it adds confusion to software developers who are used to have their code
-organized in a way where every class has a single purpose or covers a single domain - thus the misunderstanding that
-Creators are, in fact, Factories.
+responsibility of classes, by introducing a responsibility of creating external objects. Because of this, it adds 
+confusion to software developers who are used to have their code organized in a way where every class has a single 
+purpose or covers a single domain - thus the misunderstanding that Creators are, in fact, Factories.
 
 ### Creators are NOT a specific type of class
 
