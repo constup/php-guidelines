@@ -25,7 +25,7 @@ If you find a lot of `final` classes in a project, one (or more) of these is tru
 - Original developers didn't know that Decorator design pattern exists.
 - Someone started marking classes as `final` because they knew that their less senior colleagues would be deterred from
   extending those classes (or didn't have the knowledge to extend them).
-- `final` classes were used purely as an internal convention of the team and enforced on code reviews. What the real
+- `final` classes were used purely as an internal convention of the team and enforced on code reviews. The real 
   questions here are: Why was a class declared as final in the first place? What was the real problem you were trying to
   solve or prevent by declaring a class as `final`? If you have to forbid inheritance as well as use of the final class
   as a type of property of another class (to prevent the Decorator workaround for `final` keyword), is your architecture
