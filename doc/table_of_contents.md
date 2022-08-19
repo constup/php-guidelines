@@ -4,7 +4,10 @@
   - Creational
     - [Factory Method](../src/DesignPatterns/Creational/FactoryMethod)
       - [Theoretical examples](../src/DesignPatterns/Creational/FactoryMethod/TheoreticalExamples)
-      - [Alternative solution](../src/DesignPatterns/Creational/FactoryMethod/AlternativeSolution) 
+      - [Alternative solution](../src/DesignPatterns/Creational/FactoryMethod/AlternativeSolution)
+- [Warning signs](../src/WarningSigns)
+  - [Final classes](../src/WarningSigns/FinalClasses)
+    - [Decorator override example](../src/WarningSigns/FinalClasses/DecoratorOverride) 
 
 ## Links
 
