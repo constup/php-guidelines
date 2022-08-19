@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace App\WarningSigns\FinalClasses\DecoratorOverride;
 
-class FinalClass extends ExtendedClass implements ComponentInterface
+final class FinalClass extends ExtendedClass implements ComponentInterface
 {
     public function operation(): string
     {
