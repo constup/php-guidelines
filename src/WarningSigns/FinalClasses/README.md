@@ -2,8 +2,8 @@
 
 ## Definition
 
-> The `final` keyword prevents child classes from overriding a method or constant by prefixing the definition with final. 
-If the class itself is being defined final then it cannot be extended.
+> The `final` keyword prevents child classes from overriding a method or constant by prefixing the definition with 
+> `final`. If the class itself is being defined final then it cannot be extended.
 
 Source: [PHP Documentation](https://www.php.net/manual/en/language.oop5.final.php)
 
