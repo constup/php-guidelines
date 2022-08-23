@@ -138,4 +138,11 @@ Features of this example:
   that the return type of factory method must be Product's interface.
 - Implementation details of factory methods of Concrete Creators (extending/implementing the same creator) can be 
   different. 
+
+---
+
+## Links
+
+[Contents](../../../../../doc/table_of_contents.md) • [Factory Method Design Pattern](../README.md) • [Home](../../../../../README.md)
+
  

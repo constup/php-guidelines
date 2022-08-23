@@ -2,7 +2,7 @@
 
 ## Table of contents
 
-- [Abstract Creator; internal use of Factory Method](#abstract-creator-internal-use-of-a-factory-method)
+- [Abstract Creator; internal use of Factory Method](#abstract-creator-internal-use-of-factory-method)
 - [More than one Factory Method](#more-than-one-factory-method)
 
 ## Abstract Creator; internal use of Factory Method
@@ -47,3 +47,9 @@ Features of this example:
   These products are then used in the main functionality of UI classes.
 - See [More than one Factory Method](../TheoreticalExamples/README.md#more-than-one-factory-method) for more theoretical
   details (with theoretical example equivalent).
+
+---
+
+## Links
+
+[Contents](../../../../../doc/table_of_contents.md) • [Factory Method Design Pattern](../README.md) • [Home](../../../../../README.md)
