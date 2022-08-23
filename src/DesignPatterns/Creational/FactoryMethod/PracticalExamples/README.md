@@ -8,7 +8,7 @@
 ## Abstract Creator; internal use of Factory Method
 
 Links:
-- [Link to the example.](./AbstractCreatorInternalUse)) 
+- [Link to the example.](./AbstractCreatorInternalUse)
 - [Use of the example in a Symfony Command.](../../../../Command/DesignPatterns/Creational/FactoryMethod/PracticalExamples/AbstractCreatorInternalUseCommand.php)
 - Execute Symfony command:
   ```shell
@@ -52,4 +52,4 @@ Features of this example:
 
 ## Links
 
-[Contents](../../../../../doc/table_of_contents.md) • [Factory Method Design Pattern](../README.md) • [Home](../../../../../README.md)
+[Contents](../../../../../doc/table_of_contents.md) • [Factory Method Design Pattern](../../FactoryMethod) • [Home](../../../../../README.md)
