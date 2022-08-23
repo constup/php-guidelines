@@ -17,6 +17,14 @@ use Symfony\Component\Console\Output\OutputInterface;
 )]
 class MoreThanOneFactoryMethodCommand extends Command
 {
+    /**
+     * Run this command in Docker: docker exec -it constup_php_guidelines php /usr/src/app/bin/console design-patterns:factory-method:more-than-one-factory-method
+     * Run this command in local: php bin/console design-patterns:factory-method:more-than-one-factory-method
+     *
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return int
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         /**

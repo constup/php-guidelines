@@ -13,13 +13,15 @@
     - [Creators are NOT exclusively abstract classes and interfaces](#creators-are-not-exclusively-abstract-classes-and-interfaces) 
     - [Details of the implementation of factory methods is NOT defined in the Factory Method Design Pattern](#details-of-the-implementation-of-factory-methods-is-not-defined-in-the-factory-method-design-pattern)
 - [Examples](#examples)
+    - [Theoretical examples](#theoretical-examples)
+    - [Practical examples](#practical-examples) 
 - [Alternative solution](#alternative-solution) 
 - [Conclusions](#conclusions)
 - [References](#references)
 
 ## Definition and claimed purposes
 
-- Definition: Define an interface for creating an object, but let subclasses decide which class to instantiate. Factory
+- > Define an interface for creating an object, but let subclasses decide which class to instantiate. Factory
   Method lets a class defer instantiation to subclasses. [[1](#1)]
 
 - Intended to be used when a class can't anticipate the type of the object it must create, and wants to delegate this
@@ -143,6 +145,8 @@ return type is Product Interface.
 
 ## Examples
 
+## Theoretical examples
+
 Several theoretical examples are available in [TheoreticalExamples](./TheoreticalExamples) and are 
 including:
 
@@ -150,6 +154,13 @@ including:
 - [Interface Creator; internal use of a Factory Method](./TheoreticalExamples/README.md#interface-creator-internal-use-of-a-factory-method)
 - [More than one Factory Method](./TheoreticalExamples/README.md#more-than-one-factory-method)
 - [Parameterized Factory Method](./TheoreticalExamples/README.md#parameterized-factory-method)
+
+## Practical examples
+
+The following practical examples are available in [PracticalExamples](./PracticalExamples):
+
+- [Abstract Creator; internal use of Factory Method](./PracticalExamples/README.md#abstract-creator-internal-use-of-factory-method)
+- [More than one Factory Method](./PracticalExamples/README.md#more-than-one-factory-method)
 
 ## Alternative solution
 
