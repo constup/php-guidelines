@@ -25,6 +25,7 @@ class LinuxRenderService implements FamilyRenderServiceInterface
             'width' => $button->width,
             'theme' => $button->theme,
             'operatingSystem' => $button->operatingSystem,
+            'addedProperty' => $button->addedProperty,
         ], JSON_PRETTY_PRINT);
 
         return 'Render Linux Button. ' . PHP_EOL . $result;
