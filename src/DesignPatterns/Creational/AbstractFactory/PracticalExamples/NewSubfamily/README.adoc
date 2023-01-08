@@ -1,0 +1,89 @@
+= Adding a new Subfamily
+:stylesheet: ../../../../../../doc/css/asciidoc-style.css
+:toc:
+:toclevels: 4
+
+The classes are separated by the type of the operating system. However, that pretty much locks the family of objects to
+only be related to one property - the _operating system_. But, you can and might need to introduce subfamilies.
+`LinuxButton` can have a _desktop environment_ subfamily: `KDELinuxButton`, `GnomeLinuxButton`, `CinnamonLinuxButton`,
+`XfceLinuxButton`,…
+
+== 1. Abstract Factory
+
+====
+*Examples:*
+
+* The original state of the objects: link:../OriginalExample[OriginalExample]
+** Products: `Button`, `Checkbox`;
+** Family:
+*** Operating system (`Linux`, `Windows`);
+* Adding a new subfamily: link:./[NewSubfamily]
+** Added a subfamily of Operating System: *Desktop Environment*
+** Added the following members of the Desktop Environment subfamily:
+*** Linux: `CrossPlatform`, `KDE`
+*** Windows: `CrossPlatform`
+====
+
+=== 1.1. New files
+
+* Implement new Concrete Products (`Button`, `Checkbox`) for each new subfamily member (`KDE`, `CrossPlatform`) of each
+ family (`Linux`, `Windows`);
+* Implement new Concrete Factories (`KDEFactory`, `Linux/CrossPlatformFactory`, `Windows/CrossPlatformFactory`) for each
+ new subfamily member.
+
+=== 1.2. Modifications
+
+* Modify `FactoryResolver` to include support for the new subfamily.
+
+=== 1.3. Unchanged
+
+* Existing Concrete Products (`LinuxButton`, `LinuxCheckbox`,…).
+* Existing Concrete Factories (`LinuxUIFactory`, `WindowsUIFactory`).
+* Abstract Factory.
+* `ClientService`.
+
+=== 1.4. Conclusion
+
+Similar to link:../NewFamilyMember[adding a new family member], adding a new subfamily has little to no impact on the
+existing code. Like when adding a new family, it also suffers from code repetition with regard to defining the same
+properties, constructors and utility methods (get, set, with,…).
+
+== 2. Service Bundle
+
+====
+*Examples:*
+
+* The original state of the objects: link:../../Alternatives/ServiceBundle/OriginalExample[OriginalExample]
+** Products: `Button`, `Checkbox`;
+** Family:
+*** Operating system (`Linux`, `Windows`);
+* Adding a new subfamily: link:../../Alternatives/ServiceBundle/NewSubFamily[NewSubfamily]
+** Added a subfamily of Operating System: *Desktop Environment*
+** Added the following members of the Desktop Environment subfamily:
+*** Linux: `CrossPlatform`, `KDE`
+*** Windows: `CrossPlatform`
+====
+
+=== 2.1. New files
+
+* Implement new Concrete Products (`Button`, `Checkbox`) for the new subfamily. If subfamily members (`KDE`,
+`CrossPlatform`) all have the same properties, only one of each Concrete Products needs to be created.
+* Create Concrete Service classes for each new subfamily member (`KDEFactory`, `KDERenderService`);
+
+=== 2.2. Modifications
+
+* Modify `FactoryResolver` to include support for the new subfamily.
+
+=== 2.3. Unchanged
+
+* All existing classes and interfaces, except `FamilyResolver`;
+
+=== 2.4. Conclusion
+
+Service Bundle approach not only has the same level of convenience when it comes to implementing a subfamily as Abstract
+Factory approach does - it also eliminates the need to repeat implementation of properties, a constructor and utility
+methods (get, set, with,…) if the set of properties is the same as in other family members.
+
+== 3. Links
+
+link:../../README.md[Abstract Factory] • link:../../../../../../doc/table_of_contents.md[Contents] • link:../../../../../../README.adoc[Home]
