@@ -1,0 +1,89 @@
+= New Product
+:stylesheet: ../../../../../../doc/css/asciidoc-style.css
+:toc:
+:toclevels: 4
+
+== 1. Abstract Factory
+
+====
+*Examples:*
+
+* The original state of the objects: link:../OriginalExample[OriginalExample]
+** Products: `Button`, `Checkbox`;
+** Family:
+*** Operating system (`Linux`, `Windows`);
+* Added a new product: link:./[NewProduct]
+** Added new product: `Scrollbar`
+====
+
+=== 1.1. New files
+
+* New Product Interface (`ScrollbarInterface`).
+* New Concrete Products for all families and subfamilies (`LinuxScrollbar`, `WindowsScrollbar`).
+
+=== 1.2. Modifications
+
+* Add a method for producing new Products (`produceScrollbar(): ScrollbarInterface`) to Abstract Factory.
+* Add a method for producing new Products (concrete implementations of methods from the Abstract Factory interface, as
+ listed in the previous bullet point) to Concrete Factories (`LinuxFactory`, `WindowsFactory`).
+
+=== 1.3. Unchanged
+
+* Existing products and their interfaces (`LinuxButton`, `LinuxCheckbox`, `ButtonInterface`, `CheckboxInterface`)
+* `FactoryResolver`
+* `ClientService`
+
+=== 1.4. Conclusion
+
+Even though adding a new product to the family is described pretty much everywhere in literature as one of the main
+problems (if not the main problem) of the Abstract Factory design pattern, it supports adding a new Product pretty well.
+Modifications of the existing classes are limited to adding new methods to the Abstract Factory and Concrete Factories
+in order to support the new product. Previously written client code (and other code not related to the family) is
+backward compatible after the addition of a new product (until you actually want to expand your code and use the new
+product), since none of the existing Products or their service methods were changed.
+
+== 2. Service Bundle
+
+====
+*Examples:*
+
+* The original state of the objects: link:../../Alternatives/ServiceBundle/OriginalExample[OriginalExample]
+** Products: `Button`, `Checkbox`;
+** Family:
+*** Operating system (`Linux`, `Windows`);
+* Added a new product: link:../../Alternatives/ServiceBundle/NewProduct[NewProduct]
+** Added new product: `Scrollbar`
+====
+
+=== New files
+
+* New Product Interface (`ScrollbarInterface`).
+* New Concrete Product (`Scrollbar`).
+
+=== Modifications
+
+* Expand Service interfaces (`FamilyFactoryInterface`, `FamilyRenderServiceInterface`,…) to include methods which are
+ handling the new product (`produceScrollbar`, `renderScrollbar`);
+* Expand Concrete services (`LinuxFactory`, `LinuxRenderService`,…) to include methods which are handling the new
+ product (`produceScrollbar`, `renderScrollbar`,…);
+
+=== Unchanged
+
+* Existing products and their interfaces (`LinuxButton`, `LinuxCheckbox`, `ButtonInterface`, `CheckboxInterface`)
+* `FactoryResolver`
+* `ClientService`
+
+=== Conclusion
+
+Like in the Abstract Factory, adding a new product is fairly easy and modifications are limited to declaring and
+implementing service methods in already existing classes and interfaces. Previously written code is, again, backward
+compatible, until the point when using the new product is needed. Technically speaking, the amount of modified files is
+bigger in Service Bundle implementation, because services are separated in their own classes. However, the amount of
+declared and implemented methods is exactly the same as in the Abstract Factory implementation. Thus, Service Bundle is
+a completely viable alternative to Abstract Factory, when it comes to supporting additions of a new product.
+
+'''
+
+== 3. Links
+
+link:../../README.md[Abstract Factory] • link:../../../../../../doc/table_of_contents.md[Contents] • link:../../../../../../README.adoc[Home]
