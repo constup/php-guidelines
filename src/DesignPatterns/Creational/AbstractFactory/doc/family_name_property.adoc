@@ -1,0 +1,125 @@
+= Family name property
+:stylesheet: ../../../../../doc/css/asciidoc-style.css
+:toc:
+:toclevels: 4
+:icons: font
+:iconfont-name: "Open Sans"
+
+== 1. Problems when family property is missing
+
+=== 1.1. Determine a parent family of an object
+
+Take a look at the link:../PracticalExamples/NewSubfamily[NewSubfamily] example. We have defined a subfamily of an operating
+system based on a desktop environment. This introduced KDE, as Linux-exclusive, and a (fictional) CrossPlatform desktop
+environment, which is present in both Windows and Linux.
+
+.Task:
+:!example-caption:
+====
+You have a `CrossPlatform` object - determine whether it belongs to `Windows` or `Linux`
+family of objects at runtime.
+====
+
+==== 1.1.1. Option 1: File and directory naming convention
+
+The only option out of the box, without any additions to the contents of classes and interfaces in the Abstract Factory
+design pattern, is to use a naming convention for classes and directories. Fully qualified class name of the object is
+then read at runtime and the naming convention can be used to determine the parent family. However, this is a complex
+and resource consuming set of operations.
+
+There is more to consider when introducing a naming convention in order to identify objects at runtime. The primary role
+of names of files and directories should be for developers to find and understand code more easily. Of course, there can
+be exceptions and conventions which your application/business logic uses in *some* cases, but using file and directory
+names to directly affect your business logic is usually a road to disaster. Just ask any poor soul who had a misfortune
+of working in Magento 1.x.
+
+==== 1.1.2. Option 2: Empty family interfaces
+
+The second option is to create an empty interface for each of the families and subfamilies (`LinuxButtonInterface`,
+`KDEButtonInterface`, `LinuxCheckboxInterface`, `KDECheckboxInterface`,…), and then let the Concrete Products
+implement these interfaces. You can then check if your object implements an interface you are looking for.
+
+We are not going to go deeper into discussion here whether empty interfaces, in general, are good or bad. Some say that
+empty interfaces are acceptable only for compile time class identification [<<reference-1, 1>>], others are saying empty
+interfaces are completely fine and can be used as "markers" [<<reference-2,2>>], and some are completely against empty
+interfaces.However, creating yet another set of files to serve the same purpose of classifying objects as their own
+names already are, is pushing the missing family property situation a bit too far. Especially since Concrete Products
+now must implement interfaces of all parent families.
+
+==== 1.1.3. Option 3: Attributes
+
+The third option is using class attributes in order to tag Concrete Products. This further complicates things by
+requiring an Attribute class to be implemented. The Attribute class itself uses Reflection API, which will have an
+impact on performance, compared to simply including the family property and reading from it.
+
+'''
+
+=== 1.2. Data from third-party sources
+
+.Task:
+:!example-caption:
+====
+You received the following JSON from a third-party source (example: an API call):
+[source,json]
+----
+{
+    "label": "Button label",
+    "height": 20,
+    "width": 60,
+    "theme": "default_light_theme"
+}
+----
+Deserialize this data and create a Button object.
+====
+
+This is a complete set of data required to produce an object of a `ButtonInterface`, and it's everything that an object
+serializer produces by default - but it lacks crucial information. *Which exact object is it?* `LinuxButton`?
+`WindowsButton`? `KDEButton`?
+
+The naming convention, product family interfaces and attributes, mentioned previously, are going out of the window the
+moment your application needs to *receive data from an external source (passed in JSON, XML, CSV,… format), or even
+an internal queue or stack* and perform *deserialization* in order to create an object. Serializer libraries can not
+do this by default - without you having to manually customize the serializer/deserializer and include meta-data which
+carries the information about which family of objects your data belongs to.
+
+While we are at meta-data, if the theoretical definition of Abstract Factories is followed without including the family
+property, the only way for a serializer to know which object it should create is to receive meta-data along with the
+payload, or to have different endpoints, one for each of the families (*Linux, Windows,…_) and subfamilies (*KDE, Gnome,
+CrossPlatform,…_) in order to control which flow in your application will process received data and assume correct
+object type. If you are considering to use different endpoints approach, you have just caused external applications to
+depend on how your code is organized. Go sit in a corner and think about what you just did.
+
+== 2. Conclusion
+
+*To summarize:* The decision to use Abstract Factories, as they are defined in theory - without a family property,
+has an impact on:
+
+* Serializer/Deserializer implementation;
+* Internal queue/object/data stack implementation;
+* Request/response meta-data and/or the amount of data receiving endpoints;
+* Depending on the approach, it might have an impact on third-party applications which are using your endpoints and HTTP
+ request overhead;
+
+If the family property value is not stored in Concrete Products, you will most likely end up depending on an external
+parameter, which you will have to drag along in the code in order to use it where it's needed.
+
+Apart from dragging a parameter through method calls and/or other objects, which can sometimes be difficult and force
+you to make compromises you don't like, this approach is also not safe. Any difference between an expected value and the
+contents of the parameter, which components of your Abstract Factory do not have control over, can lead to wrong type
+identification and affect your business logic.
+
+====
+The best solution for problems listed above is to include family property inside your Concrete Products. Of course, if
+you are dealing with an extremely complex object family tree, you will need to consider another approach. However,
+this is way out of scope of Abstract Factories.
+====
+
+
+== 3. References
+
+* [[reference-1]][1] CA1040: Avoid empty interfaces - .NET official documentation - https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1040
+* [[reference-2]][2] Interfaces and Inheritance - Oracle Java official documentation - https://docs.oracle.com/javase/tutorial/java/IandI/QandE/interfaces-answers.html
+
+== 4. Links
+
+link:../README.md[Abstract Factory design pattern (parent page)] • link:../../../../../doc/table_of_contents.md[Contents] • link:../../../../../README.adoc[Home]
