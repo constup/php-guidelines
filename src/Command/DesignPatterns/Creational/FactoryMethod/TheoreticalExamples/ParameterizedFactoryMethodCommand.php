@@ -21,8 +21,9 @@ class ParameterizedFactoryMethodCommand extends Command
      * Run this command in Docker: docker exec -it constup_php_guidelines php /usr/src/app/bin/console design-patterns:factory-method:parameterized-factory-method
      * Run this command in local: php bin/console design-patterns:factory-method:parameterized-factory-method
      *
-     * @param InputInterface $input
+     * @param InputInterface  $input
      * @param OutputInterface $output
+     *
      * @return int
      */
     protected function execute(InputInterface $input, OutputInterface $output): int

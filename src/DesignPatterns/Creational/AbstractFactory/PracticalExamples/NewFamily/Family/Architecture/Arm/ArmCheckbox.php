@@ -22,7 +22,7 @@ class ArmCheckbox implements CheckboxInterface
             'label' => $this->label,
             'theme' => $this->theme,
             'enabled' => $this->enabled ? 'true' : 'false',
-            'architecture' => $this->architecture
+            'architecture' => $this->architecture,
         ], JSON_PRETTY_PRINT);
 
         return 'Render ARM Checkbox. ' . PHP_EOL . $result;

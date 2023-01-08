@@ -10,8 +10,7 @@ class Factory2 implements FactoryInterface
         string $className,
         string $stringProperty,
         int $integerProperty
-    ): ProductInterface
-    {
+    ): ProductInterface {
         return new $className(
             'Factory2 adds some specific logic to object creation.' . PHP_EOL . $stringProperty,
             $integerProperty

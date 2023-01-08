@@ -30,6 +30,7 @@ class FactoryResolver
                     default:
                         throw new Exception('Invalid operating system or architecture.');
                 }
+                // no break
             default:
                 throw new Exception('Invalid operating system.');
         }

@@ -22,7 +22,7 @@ class WindowsCheckbox implements CheckboxInterface
             'label' => $this->label,
             'theme' => $this->theme,
             'enabled' => $this->enabled ? 'true' : 'false',
-            'operatingSystem' => $this->operatingSystem
+            'operatingSystem' => $this->operatingSystem,
         ], JSON_PRETTY_PRINT);
 
         return 'Render Windows Checkbox. ' . PHP_EOL . $result;

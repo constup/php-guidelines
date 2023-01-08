@@ -22,7 +22,7 @@ class X86Checkbox implements CheckboxInterface
             'label' => $this->label,
             'theme' => $this->theme,
             'enabled' => $this->enabled ? 'true' : 'false',
-            'architecture' => $this->architecture
+            'architecture' => $this->architecture,
         ], JSON_PRETTY_PRINT);
 
         return 'Render X86 Checkbox. ' . PHP_EOL . $result;
