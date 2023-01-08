@@ -34,20 +34,20 @@ class NewFamilyMemberCommand extends Command
          * You will probably want to instantiate Services in another way, either somewhere else inside your code or in
          * the Dependency Injection Container.
          */
-        $factoryResolver = new FamilyResolver();
+        $familyResolver = new FamilyResolver();
         $clientService = new ClientService();
 
         echo 'Example of adding a new family member to a Service Bundle. An alternative to Abstract Factory.' . PHP_EOL;
         echo 'Compared to the original state, a new family member called `Android` has been added to the `OperatingSystem` family, alongside Linux and Windows.' . PHP_EOL . PHP_EOL;
 
         echo 'Rendering Windows Button and Checkbox: ' . PHP_EOL . PHP_EOL;
-        echo $clientService->renderUI($factoryResolver->resolve('windows')) . PHP_EOL;
+        echo $clientService->renderUI($familyResolver->resolve('windows')) . PHP_EOL;
 
         echo 'Rendering Linux Button and Checkbox: ' . PHP_EOL . PHP_EOL;
-        echo $clientService->renderUI($factoryResolver->resolve('linux')) . PHP_EOL;
+        echo $clientService->renderUI($familyResolver->resolve('linux')) . PHP_EOL;
 
         echo 'Rendering Android Button and Checkbox: ' . PHP_EOL . PHP_EOL;
-        echo $clientService->renderUI($factoryResolver->resolve('android')) . PHP_EOL;
+        echo $clientService->renderUI($familyResolver->resolve('android')) . PHP_EOL;
 
         return Command::SUCCESS;
     }
