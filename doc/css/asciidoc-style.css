@@ -13,3 +13,10 @@ h1, h2, h3, h4, h5, h6, #toctitle {
     color: darkseagreen;
     font-weight: bold;
 }
+
+div > .exampleblock > .title {
+    font-family: "Roboto Mono", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    color: darkseagreen;
+}
