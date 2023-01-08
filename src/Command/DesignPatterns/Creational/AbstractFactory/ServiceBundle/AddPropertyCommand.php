@@ -37,16 +37,16 @@ class AddPropertyCommand extends Command
          * You will probably want to instantiate Services in another way, either somewhere else inside your code or in
          * the Dependency Injection Container.
          */
-        $factoryResolver = new FamilyResolver();
+        $familyResolver = new FamilyResolver();
         $clientService = new ClientService();
 
         echo 'Example of adding a property to a Product in a Service Bundle. An alternative to Abstract Factory.' . PHP_EOL;
         echo 'Compared to the original state, Buttons have a new property called `addedProperty`.' . PHP_EOL . PHP_EOL;
 
         echo 'Rendering Linux Button and Checkbox: ' . PHP_EOL . PHP_EOL;
-        echo $clientService->renderUI($factoryResolver->resolve('linux'));
+        echo $clientService->renderUI($familyResolver->resolve('linux'));
         echo PHP_EOL . 'Rendering Windows Button and Checkbox: ' . PHP_EOL . PHP_EOL;
-        echo $clientService->renderUI($factoryResolver->resolve('windows'));
+        echo $clientService->renderUI($familyResolver->resolve('windows'));
 
         return Command::SUCCESS;
     }
