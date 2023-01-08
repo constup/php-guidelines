@@ -73,4 +73,4 @@ utility methods (get, set, with,…) if the set of properties is the same as in 
 
 == 3. Links
 
-link:../../README.md[Abstract Factory] • link:../../../../../../doc/table_of_contents.md[Contents] • link:../../../../../../README.md[Home]
+link:../../README.md[Abstract Factory] • link:../../../../../../doc/table_of_contents.md[Contents] • link:../../../../../../README.adoc[Home]

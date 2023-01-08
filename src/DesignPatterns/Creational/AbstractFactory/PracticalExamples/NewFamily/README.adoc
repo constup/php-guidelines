@@ -88,4 +88,4 @@ together into Service Classes, instead of being written in Concrete Products alo
 
 == 3. Links
 
-link:../../README.md[Abstract Factory] • link:../../../../../../doc/table_of_contents.md[Contents] • link:../../../../../../README.md[Home]
+link:../../README.md[Abstract Factory] • link:../../../../../../doc/table_of_contents.md[Contents] • link:../../../../../../README.adoc[Home]
