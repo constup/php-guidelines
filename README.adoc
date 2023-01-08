@@ -1,4 +1,5 @@
 = PHP Guidelines
+:stylesheet: doc/css/asciidoc-style.css
 
 PHP development guidelines repository with examples. This includes, but is not limited to:
 
