@@ -45,6 +45,7 @@ class AddPropertyCommand extends Command
 
         echo 'Rendering Linux Button and Checkbox: ' . PHP_EOL . PHP_EOL;
         echo $clientService->renderUI($familyResolver->resolve('linux'));
+
         echo PHP_EOL . 'Rendering Windows Button and Checkbox: ' . PHP_EOL . PHP_EOL;
         echo $clientService->renderUI($familyResolver->resolve('windows'));
 
