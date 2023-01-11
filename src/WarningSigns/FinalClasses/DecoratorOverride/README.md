@@ -29,4 +29,4 @@ classes return as result of the `operation` method and compare it with the expec
 
 ## Links 
 
-[FinalClasses](../README.md) • [Contents](../../../../doc/contents.md) • [Home](../../../../README.md)
+[FinalClasses](../README.md) • [Contents](../../../../doc/table_of_contents.adoc) • [Home](../../../../README.adoc)
