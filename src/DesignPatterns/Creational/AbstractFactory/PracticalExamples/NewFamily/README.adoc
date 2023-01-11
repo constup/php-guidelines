@@ -86,6 +86,17 @@ unique implementations. The amount of service methods is the same as in the Abst
 together into Service Classes, instead of being written in Concrete Products along with other service methods (creating
 "monster classes").
 
-== 3. Links
+== 3. Running the examples
+
+The following CLI commands are available:
+
+* Abstract Factory:
+** Docker: `docker exec -it constup_php_guidelines php /usr/src/app/bin/console design-patterns:abstract-factory:practical:new-family`
+** CLI: `php bin/console design-patterns:abstract-factory:practical:new-family`
+* Service Bundle:
+** Docker: `docker exec -it constup_php_guidelines php /usr/src/app/bin/console design-patterns:abstract-factory:service-bundle:new-family`
+** CLI: `php bin/console design-patterns:abstract-factory:service-bundle:new-family`
+
+== 4. Links
 
 link:../../README.md[Abstract Factory] • link:../../../../../../doc/table_of_contents.md[Contents] • link:../../../../../../README.adoc[Home]

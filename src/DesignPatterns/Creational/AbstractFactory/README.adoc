@@ -88,6 +88,7 @@ link:./PracticalExamples/OriginalExample/CheckboxInterface.php[`CheckboxInterfac
 online or in literature will not contain, or even mention this property.
 ====
 
+[#_5_key_fetures]
 == 5. Key features
 
 In order to present a viable alternative for Abstract Factory design pattern, a list of key features should be created.

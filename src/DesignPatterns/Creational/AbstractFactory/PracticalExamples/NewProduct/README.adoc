@@ -55,25 +55,25 @@ product), since none of the existing Products or their service methods were chan
 ** Added new product: `Scrollbar`
 ====
 
-=== New files
+=== 2.1. New files
 
 * New Product Interface (`ScrollbarInterface`).
 * New Concrete Product (`Scrollbar`).
 
-=== Modifications
+=== 2.2. Modifications
 
 * Expand Service interfaces (`FamilyFactoryInterface`, `FamilyRenderServiceInterface`,…) to include methods which are
  handling the new product (`produceScrollbar`, `renderScrollbar`);
 * Expand Concrete services (`LinuxFactory`, `LinuxRenderService`,…) to include methods which are handling the new
  product (`produceScrollbar`, `renderScrollbar`,…);
 
-=== Unchanged
+=== 2.3. Unchanged
 
 * Existing products and their interfaces (`LinuxButton`, `LinuxCheckbox`, `ButtonInterface`, `CheckboxInterface`)
 * `FactoryResolver`
 * `ClientService`
 
-=== Conclusion
+=== 2.4. Conclusion
 
 Like in the Abstract Factory, adding a new product is fairly easy and modifications are limited to declaring and
 implementing service methods in already existing classes and interfaces. Previously written code is, again, backward
@@ -82,8 +82,17 @@ bigger in Service Bundle implementation, because services are separated in their
 declared and implemented methods is exactly the same as in the Abstract Factory implementation. Thus, Service Bundle is
 a completely viable alternative to Abstract Factory, when it comes to supporting additions of a new product.
 
-'''
+== 3. Running the examples
 
-== 3. Links
+The following CLI commands are available:
+
+* Abstract Factory:
+** Docker: `docker exec -it constup_php_guidelines php /usr/src/app/bin/console design-patterns:abstract-factory:practical:new-product`
+** CLI: `php bin/console design-patterns:abstract-factory:practical:new-product`
+* Service Bundle:
+** Docker: `docker exec -it constup_php_guidelines php /usr/src/app/bin/console design-patterns:abstract-factory:service-bundle:new-product`
+** CLI: `php bin/console design-patterns:abstract-factory:service-bundle:new-product`
+
+== 4. Links
 
 link:../../README.md[Abstract Factory] • link:../../../../../../doc/table_of_contents.md[Contents] • link:../../../../../../README.adoc[Home]

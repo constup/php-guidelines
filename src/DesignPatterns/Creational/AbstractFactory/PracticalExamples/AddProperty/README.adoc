@@ -100,6 +100,17 @@ equal to the number of changes in Abstract Factory design pattern.
 The amount of the required changes in the service methods (`render()`) are the same in both Abstract Factory and Service
 Bundle.
 
+== 3. Running the examples
+
+The following CLI commands are available:
+
+* Abstract Factory:
+** Docker: `docker exec -it constup_php_guidelines php /usr/src/app/bin/console design-patterns:abstract-factory:practical:add-property`
+** CLI: `php bin/console design-patterns:abstract-factory:practical:add-property`
+* Service Bundle:
+** Docker: `docker exec -it constup_php_guidelines php /usr/src/app/bin/console design-patterns:abstract-factory:service-bundle:add-property`
+** CLI: `php bin/console design-patterns:abstract-factory:service-bundle:add-property`
+
 == 4. Links
 
 link:../../README.md[Abstract Factory] • link:../../../../../../doc/table_of_contents.md[Contents] • link:../../../../../../README.adoc[Home]

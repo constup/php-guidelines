@@ -71,6 +71,17 @@ Service Bundle approach not only has the same level of convenience when it comes
 Abstract Factory approach does - it also eliminates the need to repeat implementation of properties, a constructor and
 utility methods (get, set, with,…) if the set of properties is the same as in other family members.
 
-== 3. Links
+== 3. Running the examples
+
+The following CLI commands are available:
+
+* Abstract Factory:
+** Docker: `docker exec -it constup_php_guidelines php /usr/src/app/bin/console design-patterns:abstract-factory:practical:new-family-member`
+** CLI: `php bin/console design-patterns:abstract-factory:practical:new-family-member`
+* Service Bundle:
+** Docker: `docker exec -it constup_php_guidelines php /usr/src/app/bin/console design-patterns:abstract-factory:service-bundle:new-family-member`
+** CLI: `php bin/console design-patterns:abstract-factory:service-bundle:new-family-member`
+
+== 4. Links
 
 link:../../README.md[Abstract Factory] • link:../../../../../../doc/table_of_contents.md[Contents] • link:../../../../../../README.adoc[Home]
