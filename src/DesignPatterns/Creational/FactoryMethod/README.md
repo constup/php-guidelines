@@ -189,4 +189,4 @@ enabling and encouraging unnecessary dependencies between unrelated classes and 
 
 ## Links
 
-[Contents](../../../../doc/table_of_contents.md) • [Home](../../../../README.md)
+[Contents](../../../../doc/table_of_contents.adoc) • [Home](../../../../README.md)

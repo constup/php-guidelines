@@ -143,6 +143,6 @@ Features of this example:
 
 ## Links
 
-[Contents](../../../../../doc/table_of_contents.md) • [Factory Method Design Pattern](../../FactoryMethod) • [Home](../../../../../README.md)
+[Contents](../../../../../doc/table_of_contents.adoc) • [Factory Method Design Pattern](../../FactoryMethod) • [Home](../../../../../README.md)
 
  

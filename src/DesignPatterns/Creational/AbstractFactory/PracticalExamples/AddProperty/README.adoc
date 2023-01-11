@@ -113,4 +113,4 @@ The following CLI commands are available:
 
 == 4. Links
 
-link:../../README.md[Abstract Factory] • link:../../../../../../doc/table_of_contents.md[Contents] • link:../../../../../../README.adoc[Home]
+link:../../README.md[Abstract Factory] • link:../../../../../../doc/table_of_contents[Contents] • link:../../../../../../README.adoc[Home]

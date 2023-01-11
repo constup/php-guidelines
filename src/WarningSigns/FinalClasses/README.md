@@ -49,4 +49,4 @@ Avoiding this is simple: don't use final classes. Forget that `final` keyword ev
 
 ## Links
 
-[Contents](../../../doc/table_of_contents.md) • [Home](../../../README.md)
+[Contents](../../../doc/table_of_contents.adoc) • [Home](../../../README.md)

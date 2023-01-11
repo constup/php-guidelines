@@ -287,7 +287,7 @@ link:./PracticalExamples/CommonMethods/[`CommonMethods`].
 
 == 10. Links
 
-link:../../../../doc/table_of_contents.md[Contents]
+link:../../../../doc/table_of_contents[Contents]
 • link:../../../../README.md[Home]
 • link:./doc/family_name_property.adoc[Family name property]
 • link:./Alternatives/ServiceBundle/[Service Bundle alternative]
