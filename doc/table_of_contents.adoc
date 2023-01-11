@@ -6,9 +6,11 @@
 * Design patterns
 * Creational
 ** link:../src/DesignPatterns/Creational/FactoryMethod[Factory Method]
-** link:../src/DesignPatterns/Creational/FactoryMethod/TheoreticalExamples[Theoretical examples]
-** link:../src/DesignPatterns/Creational/FactoryMethod/PracticalExamples[Practical examples]
-** link:../src/DesignPatterns/Creational/FactoryMethod/AlternativeSolution[Alternative solution]
+*** link:../src/DesignPatterns/Creational/FactoryMethod/TheoreticalExamples[Theoretical examples]
+*** link:../src/DesignPatterns/Creational/FactoryMethod/PracticalExamples[Practical examples]
+*** link:../src/DesignPatterns/Creational/FactoryMethod/AlternativeSolution[Alternative solution]
+** link:../src/DesignPatterns/Creational/AbstractFactory[Abstract Factory]
+*** link:../src/DesignPatterns/Creational/AbstractFactory/Alternatives/ServiceBundle[Service Bundle alternative]
 * link:../src/WarningSigns[Warning signs]
 ** link:../src/WarningSigns/FinalClasses[Final classes]
 *** link:../src/WarningSigns/FinalClasses/DecoratorOverride[Decorator override example]
