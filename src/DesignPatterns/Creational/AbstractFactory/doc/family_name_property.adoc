@@ -2,8 +2,6 @@
 :stylesheet: ../../../../../doc/css/asciidoc-style.css
 :toc:
 :toclevels: 4
-:icons: font
-:iconfont-name: "Open Sans"
 
 == 1. Problems when family property is missing
 
