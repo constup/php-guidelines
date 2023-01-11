@@ -84,7 +84,7 @@ carries the information about which family of objects your data belongs to.
 
 While we are at meta-data, if the theoretical definition of Abstract Factories is followed without including the family
 property, the only way for a serializer to know which object it should create is to receive meta-data along with the
-payload, or to have different endpoints, one for each of the families (*Linux, Windows,…_) and subfamilies (*KDE, Gnome,
+payload, or to have different endpoints, one for each of the families (_Linux, Windows,…_) and subfamilies (_KDE,
 CrossPlatform,…_) in order to control which flow in your application will process received data and assume correct
 object type. If you are considering to use different endpoints approach, you have just caused external applications to
 depend on how your code is organized. Go sit in a corner and think about what you just did.
