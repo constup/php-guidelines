@@ -31,7 +31,7 @@ class OriginalExampleCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         /**
-         * You will probably want to instantiate Services in another way, either somewhere else inside your code or in
+         * You probably want to instantiate Services in another way, either somewhere else inside your code or in
          * the Dependency Injection Container.
          */
         $factoryResolver = new FactoryResolver();

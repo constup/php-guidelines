@@ -29,7 +29,7 @@ class AbstractCreatorInternalUseCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         /**
-         * You will probably want to instantiate Concrete Creators in another way, either somewhere else
+         * You probably want to instantiate Concrete Creators in another way, either somewhere else
          * inside your code or in the Dependency Injection Container.
          */
         $creatorX = new CreatorX();
