@@ -1,0 +1,292 @@
+= Abstract Factory
+:stylesheet: ../../../../doc/css/asciidoc-style.css
+:toc:
+:toclevels: 4
+
+== 1. Definition
+
+____
+Provide an interface for creating families of related or dependent objects without specifying their concrete classes.
+[<<reference-1,1>>]
+____
+
+[#_2_practical_definition]
+== 2. Practical definition
+
+In order to see what Abstract Factories really are and how to fix some problems of them, we will take a look at the
+link:./PracticalExamples/OriginalExample[practical example].
+
+____
+Abstract Factory design pattern is nothing more than a method of taking a common property out of different objects,
+removing it and classifying object by their *name* instead - by using values of the removed property for naming the
+Concrete Factories and Concrete Products.
+____
+
+Our link:./PracticalExamples/OriginalExample[practical example] takes a property which defines the operating system,
+removes it from the `Button` and `Checkbox` and creates individual concrete classes based on the value of the missing
+`operatingSystem` property: `LinuxButton`, `WindowsButton`, `LinuxCheckbox`, `WindowsCheckbox`.
+
+[#_3_components]
+== 3. Components
+
+* *Product Interface* -
+(link:./PracticalExamples/OriginalExample/ButtonInterface.php[`ButtonInterface`],
+link:./PracticalExamples/OriginalExample/CheckboxInterface.php[`CheckboxInterface`]) - Interfaces of Products which will
+be produced by the Abstract Factory design pattern.
+* *Concrete Products* - (
+link:./PracticalExamples/OriginalExample/Family/OperatingSystem/Linux/LinuxButton.php[`LinuxButton`],
+link:./PracticalExamples/OriginalExample/Family/OperatingSystem/Linux/LinuxCheckbox.php[`LinuxCheckbox`],
+link:./PracticalExamples/OriginalExample/Family/OperatingSystem/Windows/WindowsButton.php[`WindowsButton`],
+link:./PracticalExamples/OriginalExample/Family/OperatingSystem/Windows/WindowsCheckbox.php[`WindowsCheckbox`]) -
+Concrete Products which will be produced by the Abstract Factory design pattern.
+* *Abstract Factory* - (
+link:./PracticalExamples/OriginalExample/AbstractFactory.php[`AbstractFactory`]) - An Interface which defines factory
+methods for each of the supported products. Concrete Factories will implement this interface.
+* *Concrete Factories* - (
+link:./PracticalExamples/OriginalExample/Family/OperatingSystem/Linux/LinuxFactory.php[`LinuxFactory`],
+link:./PracticalExamples/OriginalExample/Family/OperatingSystem/Windows/WindowsFactory.php[`WindowsFactory`]) - Concrete
+implementations of factories. Produces objects for a particular family.
+* *Client Service* - (
+link:./PracticalExamples/OriginalExample/ClientService.php[`ClientService`]) - A client service which uses Abstract
+Factory to produce objects of the same family. The code inside the Client Service works with abstractions and does not
+know which Concrete Products are used. The rest of the code of your application (outside the classes and interfaces used
+in the Abstract Factory design pattern) can use Client Services in order to build features which are independent of the
+details of implementation of the Products. Details of implementation of Concrete Products can change, but it will not
+affect the rest of the code.
+
+== 4. Additional elements
+
+=== 4.1. Factory resolver
+
+In theory, the components listed above are all the components of the Abstract Factory design pattern. However, this
+design pattern is mostly useless and does not produce anything - unless a Concrete Factory is passed to a Client
+Service. There will rarely be a case where you are passing an instance of a Concrete Factory directly to the Client
+Service, without first resolving which Concrete Factory to use (based on application logic, a value of some parameter,
+environment variable, API response or some other configuration value). Thus, one more component must be present:
+
+* *Factory Resolver* - (link:./PracticalExamples/OriginalExample/FactoryResolver.php[`FactoryResolver`]) - Resolves
+which Concrete Factory instance will be passed to the Client Service. This can either be a separate class (as in our
+example) or it can be wired up in the Dependency Injection Container (which, again, generates and caches a resolver
+class).
+
+=== 4.2. Family name property
+
+One additional element, which is not mentioned in the literature, is directly related to the
+<<_2_practical_definition,2. Practical definition>> - *the property holding the information about which family the
+object belongs to*. Omitting this property from Concrete Products does not have direct consequences on other components
+of the Abstract Factory design pattern. However, it creates many problems in other parts of the application and can even
+impact third-party applications.
+
+====
+*More about the family name property*, the problems when family name property is missing and possible optional
+solutions is available on a dedicated *link:./doc/family_name_property.adoc[Family name property] page*.
+
+[NOTE]
+Don't get confused. The link:./PracticalExamples/OriginalExample[practical example] has a family property included by
+default (`$operatingSystem` in link:./PracticalExamples/OriginalExample/ButtonInterface.php[`ButtonInterface`] and
+link:./PracticalExamples/OriginalExample/CheckboxInterface.php[`CheckboxInterface`]). Almost every other example found
+online or in literature will not contain, or even mention this property.
+====
+
+== 5. Key features
+
+In order to present a viable alternative for Abstract Factory design pattern, a list of key features should be created.
+The alternative must support all of them.
+
+* Object creation and use is separated from the rest of the code, with Client Service acting as a proxy.
+* A single parameter (`AbstractFactory`) passed to a Client Service for the whole family of objects is all the
+ information needed to run Client Service's methods.
+* A single resolver is used to define the flow and classes which will be used in the Client Service.
+* Client Service is able to create and use all types of objects in the family and subfamilies.
+* Client Service method definition does not change when adding a new:
+** property to Concrete Products;
+** family member;
+** family;
+** product;
+** subfamily;
+* _If family name property is present_:
+** Ability to categorize objects and determine their families and subfamilies at runtime.
+** Can use default serializers/deserializers, normalizers/denormalizers.
+** Can be identified in other data formats (JSON, CSV, XML,…)
+
+== 6. Examples, expansions and working with Abstract Factories
+
+In order to better understand Abstract Factory design pattern, its benefits, limitations and downsides and to find a
+viable alternative which solves the issues of Abstract Factories, we will address several expansions and modifications.
+
+The following topics are covered, each of them with examples which can be run in CLI:
+
+* Adding a new property to a product (link:./PracticalExamples/AddProperty/[`AddProperty`])
+* Creating a new family alongside the existing one (link:./PracticalExamples/NewFamily/[`NewFamily`])
+* Adding a new family member to the existing family (link:./PracticalExamples/NewFamilyMember/[`NewFamilyMember`])
+* Adding a new Product to the existing family (link:./PracticalExamples/NewProduct/[`NewProduct`])
+* Adding a new subfamily to an existing family (link:./PracticalExamples/NewSubfamily/[`NewSubfamily`])
+* And, finally, addressing the issues and limitations of Abstract Factory design pattern by trying to group common
+ features between family and subfamily members (link:./PracticalExamples/CommonMethods/[`CommonMethods`])
+
+All of these expansions and modifications are based on the
+link:../AbstractFactory/PracticalExamples/OriginalExample/[`OriginalExample`] which is used as a base.
+
+See each of the linked articles and its sample code for more details.
+
+== 7. Benefits and problems
+
+=== 7.1. Benefits
+
+==== 7.1.1 Object creation and use is separated form the rest of the code
+
+link:./PracticalExamples/OriginalExample/ClientService.php[`ClientService`] accepts an instance of the
+link:./PracticalExamples/OriginalExample/AbstractFactory.php[`AbstractFactory`] interface.
+link:./PracticalExamples/OriginalExample/ClientService.php[`ClientService`] itself contains code which can be applied to
+all objects which are produced by the link:./PracticalExamples/OriginalExample/AbstractFactory.php[`AbstractFactory`]
+and does not care about the implementation details of objects it's using.
+
+This allows you to change implementation details of the objects covered with Abstract Factory without affecting the rest
+of the code, since the rest of the code will use Client Service directly.
+
+==== 7.1.2. A single resolver
+
+When multiple types of objects and services exist in an application, one of the most complex and time-consuming tasks is
+to decide which ones to use, under given conditions, and to enforce that rule strictly and consistently throughout the
+application. This is true regardless of whether the objects are related or not.
+
+As mentioned in the <<_3_components,3. Components>> section, there is one additional component which determines which
+exact instance to pass to a link:./PracticalExamples/OriginalExample/ClientService.php[`ClientService`], based on a
+value of some parameter, - link:./PracticalExamples/OriginalExample/FactoryResolver.php[`FactoryResolver`]. Of course,
+this resolution does not have to be done by a dedicated class and can be delegated to a Service Container (Dependency
+Injection Container).
+
+The important part is
+link:./PracticalExamples/OriginalExample/FactoryResolver.php[`FactoryResolver`] is very important when trying to
+understand one of the advantages of the Abstract Factory Design Pattern - having to resolve once which classes to use in
+order to complete the whole series of operations is what really makes the code reusable, expandable and stable.
+
+=== 7.2. Problems
+
+==== 7.2.1. Naming
+
+====
+The term "Abstract Factory" does not describe the contents and purpose of this design pattern correctly.
+====
+
+===== 7.2.1.1. Abstract Factory is an interface, not an abstract class
+
+There is a very clear and significant distinction between *abstract classes* and *interfaces*, not only in PHP -
+but in object-oriented programming languages in general. However, that does not stop the authors of
+<<reference-1,_"Design Patterns: Elements of Reusable Object-Oriented Software"_>> to define the Abstract Factory with
+the following:
+
+____
+AbstractFactory (WidgetFactory)
+ - declares an interface for operations that create abstract product objects.
+____
+
+===== 7.2.1.2. There are no abstract factory classes in "Abstract Factory" design pattern
+
+Not a single abstract class, whose purpose is to be a factory and producing objects, is among the components of the
+"Abstract Factory" design pattern. When it comes to factories, the definition of the Abstract Factory design pattern
+lists only the link:./PracticalExamples/OriginalExample/AbstractFactory.php[AbstractFactory] *interface* and *concrete
+factory classes* which produce members of a family.
+
+===== 7.2.1.3. Solution: better name - Family Factory Interface design pattern
+
+* The main component of this design pattern is an *interface*. Everything else is built around it.
+* The interface defines methods to *produce families* of objects - thus, the "Family Factory"
+
+'''
+
+==== 7.2.2. Encapsulation and unnecessary code repetition
+
+The authors of <<reference-1,_"Design Patterns: Elements of Reusable Object-Oriented Software"_>> are exclusively using
+encapsulation while presenting the Abstract Factory design pattern. This is passed to other literature and online
+guides. Encapsulation forces data and functionality to be in the same class, which leads to undesirable consequences.
+
+Each family member must be implemented in a separate class, even if it has exactly the same properties as other family
+members. Depending on the approach and mutability or immutability of your objects, classes which have exactly the same
+properties must have the same property definitions, constructors and utility methods (`getProperty`, `setProperty`,
+`withProperty`,…) implemented. For 10 family members with 10 properties, this means 100 property definitions, 100
+constructors and 100 of each of the utility methods which you want to have - a set of 10 repeated across 10 classes.
+
+Even if you are going with a more modern approach, for example: immutable objects with readonly properties and
+constructor property promotion, this still means that at least constructors with built-in property definitions will
+be repeated, and in many cases expected to be exactly the same as others. Expecting something to be the same as some
+other thing as a convention (not enforced in the code) leads to bugs which are difficult to trace, caused by typos,
+botched copypasta or simply by working on someone else's code while not knowing that it should be the same.
+
+===== 7.2.2.1. Clarification
+
+The main functionality of each Concrete Product is contained in its service methods (`render()`) - methods which
+actually do some work. Since Abstract Factory design pattern is classifying classes into families and subfamilies, each
+family member must have their own unique implementation of each of the service methods. Therefore, each family member
+must have its own class.
+
+At the same time, because of encapsulation, each of these concrete classes contain data properties as well. Having data
+properties means that you will also have constructors and utility methods (`getProperty`, `setProperty` and/or
+`withProperty`, depending on desired mutability or immutability of your objects). These property definitions,
+constructors and utility methods are usually the same for each family member.
+
+Why "usually the same"? The only type of unique product-specific properties (not present in other family members) which
+can be added to Concrete Products are the ones whose *values* must be set inside factory methods of Concrete
+Factories. The most notable examples of such properties are family property (`$operatingSystem`) and subfamily property
+(`$desktopEnvironment`). Because there is one factory method for producing all the Concrete Products in the same family,
+the set of properties which can be passed directly from factory method arguments to constructors of Concrete Products is
+fixed for the whole family/subfamily.
+
+===== 7.2.2.2. Solution
+
+Eliminate encapsulation. Use a combination of service classes and immutable objects. Take a look at
+*link:./Alternatives/ServiceBundle[Service Bundle alternative]* for more details.
+
+'''
+
+==== 7.2.3. Encapsulation and breaking the Single Responsibility principle
+
+When Encapsulation is used, along with the implementation of Abstract Factory design pattern, the grouping of service
+methods (which actually perform some business logic, like `render()`) is based on the classification defined in the
+Abstract Factory pattern. This is why you will have service methods grouped in classes like `LinuxButton` and
+`WindowsButton`. The problem is - all service methods for a particular product, regardless of the fact that they may and
+probably will belong to a completely different domain, have their own mutually unrelated sets of dependencies and need
+to have their own support methods, are crammed up in that product's class. This promotes creation of *_monster
+classes_*.
+
+Even if domain is not the context in focus, and multiple service methods belonging to different domains are placed
+inside a single Concrete Product class, the single responsibility principle is broken on the code architecture level as
+well. Abstract Factory design pattern is a *creational design pattern*. Its purpose and focus are on creation of
+objects - not on management and use of other service methods. Yet, it manages these methods and defines how to use them
+by forcing the Client Service code to access these methods as members of families.
+
+===== 7.2.3.1. Solution
+
+Eliminate encapsulation. Use immutable data objects and place service methods in classes created based on their domain.
+Examples:
+link:./Alternatives/ServiceBundle/OriginalExample/Family/OperatingSystem/Service/Render/LinuxRenderService.php[`LinuxRenderService`]
+and
+link:./Alternatives/ServiceBundle/OriginalExample/Family/OperatingSystem/Service/Render/WindowsRenderService.php[`WindowsRenderService`].
+Take a look at *link:./Alternatives/ServiceBundle[Service Bundles alternative]* for more details.
+
+'''
+
+==== 7.2.4. Services and service methods which break family classification
+
+Abstract Factory design pattern forces classification by families and subfamilies. What if we need services and/or
+service methods which should apply only on a subset of products which belong to only a subset of families? What if these
+service methods should be exactly the same for affected products?
+
+This subject is covered in a separate document (with examples) and is available at
+link:./PracticalExamples/CommonMethods/[`CommonMethods`].
+
+== 8. Conclusions
+
+== 9. References
+
+* [[reference-1]][1] Design Patterns: Elements of Reusable Object-Oriented Software - Erich Gamma, Richard Helm, Ralph
+ Johnson, and John Vlissides - ISBN 0-201-63361-2
+* [[reference-2]][2] CA1040: Avoid empty interfaces - .NET official documentation - https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1040
+* [[reference-3]][3] Interfaces and Inheritance - Oracle Java official documentation - https://docs.oracle.com/javase/tutorial/java/IandI/QandE/interfaces-answers.html
+
+== 10. Links
+
+link:../../../../doc/table_of_contents.md[Contents]
+• link:../../../../README.md[Home]
+• link:./doc/family_name_property.adoc[Family name property]
+• link:./Alternatives/ServiceBundle/[Service Bundle alternative]
