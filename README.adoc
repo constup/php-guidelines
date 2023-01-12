@@ -20,6 +20,20 @@ convenience. The samples are written in pure PHP and are applicable to any PHP f
 
 link:./doc/table_of_contents.adoc[Table of contents] is available on a separate page.
 
+== How to use this repository
+
+The best way to use this repository is to clone it and open it in an IDE. AsciiDoc documentation and PHP examples are
+being written in link:https://www.jetbrains.com/phpstorm/[PHPStorm] with
+link:https://plugins.jetbrains.com/plugin/7391-asciidoc[AsciiDoc] plugin. It is recommended to use PHPStorm and AsciiDoc
+plugin for the best experience.
+
+The documentation uses custom CSS for AsciiDoc rendering. If the documentation text is not rendered correctly in your
+IDE, make sure that the following configuration is set:
+
+* File > Settings... > Languages & Frameworks > AsciiDoc
+** Preview browser: JCEF Browser
+** Safe mode: UNSAFE
+
 == Running the examples
 
 You are free to use this repository as an online resource. However, if you would like to run the provided examples, you
