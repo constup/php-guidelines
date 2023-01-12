@@ -18,7 +18,7 @@ convenience. The samples are written in pure PHP and are applicable to any PHP f
 
 == Table of contents
 
-link:./doc/table_of_contents[Table of contents] is available on a separate page.
+link:./doc/table_of_contents.adoc[Table of contents] is available on a separate page.
 
 == Running the examples
 
