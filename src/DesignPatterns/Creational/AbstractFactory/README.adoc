@@ -293,6 +293,6 @@ about it in a dedicated link:Alternatives/ServiceBundle/[Service Bundle] article
 == 11. Links
 
 link:../../../../doc/table_of_contents.adoc[Contents]
-• link:../../../../[Home]
+• link:../../../../README.adoc[Home]
 • link:./doc/family_name_property.adoc[Family name property]
 • link:./Alternatives/ServiceBundle/[Service Bundle alternative]

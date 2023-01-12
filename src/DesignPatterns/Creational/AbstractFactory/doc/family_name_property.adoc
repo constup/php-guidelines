@@ -120,4 +120,4 @@ this is way out of scope of Abstract Factories.
 
 == 4. Links
 
-link:../[Abstract Factory design pattern (parent page)] • link:../../../../../doc/table_of_contents.adoc[Contents] • link:../../../../../[Home]
+link:../[Abstract Factory design pattern (parent page)] • link:../../../../../doc/table_of_contents.adoc[Contents] • link:../../../../../README.adoc[Home]
