@@ -95,4 +95,4 @@ The following CLI commands are available:
 
 == 4. Links
 
-link:../../[Abstract Factory] • link:../../../../../../doc/table_of_contents[Contents] • link:../../../../../../[Home]
+link:../../[Abstract Factory] • link:../../../../../../doc/table_of_contents.adoc[Contents] • link:../../../../../../[Home]
