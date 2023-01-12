@@ -99,4 +99,4 @@ The following CLI commands are available:
 
 == 4. Links
 
-link:../../README.adoc[Abstract Factory] • link:../../../../../../doc/table_of_contents[Contents] • link:../../../../../../README.adoc[Home]
+link:../../[Abstract Factory] • link:../../../../../../doc/table_of_contents[Contents] • link:../../../../../../[Home]
