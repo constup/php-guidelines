@@ -276,16 +276,21 @@ service methods should be exactly the same for affected products?
 This subject is covered in a separate document (with examples) and is available at
 link:./PracticalExamples/CommonMethods/[`CommonMethods`].
 
-== 8. Conclusions
+== 8. Alternatives
 
-== 9. References
+Service Bundle is a completely viable alternative, which also solves some problems of Abstract Factories. Read more
+about it in a dedicated link:Alternatives/ServiceBundle/[Service Bundle] article.
+
+== 9. Conclusions
+
+== 10. References
 
 * [[reference-1]][1] Design Patterns: Elements of Reusable Object-Oriented Software - Erich Gamma, Richard Helm, Ralph
  Johnson, and John Vlissides - ISBN 0-201-63361-2
 * [[reference-2]][2] CA1040: Avoid empty interfaces - .NET official documentation - https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca1040
 * [[reference-3]][3] Interfaces and Inheritance - Oracle Java official documentation - https://docs.oracle.com/javase/tutorial/java/IandI/QandE/interfaces-answers.html
 
-== 10. Links
+== 11. Links
 
 link:../../../../doc/table_of_contents[Contents]
 • link:../../../../README.md[Home]
