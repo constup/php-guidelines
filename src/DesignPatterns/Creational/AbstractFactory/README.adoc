@@ -184,7 +184,7 @@ ____
 
 ===== 7.2.1.2. There are no abstract factory classes in "Abstract Factory" design pattern
 
-Not a single abstract class, whose purpose is to be a factory and producing objects, is among the components of the
+Not a single abstract class, whose purpose is to be a factory and produce objects, is among the components of the
 "Abstract Factory" design pattern. When it comes to factories, the definition of the Abstract Factory design pattern
 lists only the link:./PracticalExamples/OriginalExample/AbstractFactory.php[AbstractFactory] *interface* and *concrete
 factory classes* which produce members of a family.
@@ -243,7 +243,7 @@ Eliminate encapsulation. Use a combination of service classes and immutable obje
 ==== 7.2.3. Encapsulation and breaking the Single Responsibility principle
 
 When Encapsulation is used, along with the implementation of Abstract Factory design pattern, the grouping of service
-methods (which actually perform some business logic, like `render()`) is based on the classification defined in the
+methods (which actually perform some business logic, like `render()`) is based on the classification defined by the
 Abstract Factory pattern. This is why you will have service methods grouped in classes like `LinuxButton` and
 `WindowsButton`. The problem is - all service methods for a particular product, regardless of the fact that they may and
 probably will belong to a completely different domain, have their own mutually unrelated sets of dependencies and need
@@ -254,7 +254,8 @@ Even if domain is not the context in focus, and multiple service methods belongi
 inside a single Concrete Product class, the single responsibility principle is broken on the code architecture level as
 well. Abstract Factory design pattern is a *creational design pattern*. Its purpose and focus are on creation of
 objects - not on management and use of other service methods. Yet, it manages these methods and defines how to use them
-by forcing the Client Service code to access these methods as members of families.
+by forcing the Client Service code to access these methods as members of families. This does not seem to be the problem,
+until there is a need to group services in a way which is not compatible with family classification.
 
 ===== 7.2.3.1. Solution
 
