@@ -39,7 +39,7 @@ class NewSubfamilyCommand extends Command
 
         echo 'Example of adding new sub families to the existing families in an implementation of an Abstract Factory design pattern.' . PHP_EOL;
         echo 'Compared to the original state, the Operating System family now has a sub family called `desktopEnvironment`.' . PHP_EOL;
-        echo '`Linux` family got two subfamilies: `KDE` and `CrossPlatform`, while `Windows` family got one subfamily: `CrossPlatform`.' .  PHP_EOL . PHP_EOL;
+        echo '`Linux` family got two subfamilies: `KDE` and `CrossPlatform`, while `Windows` family got one subfamily: `CrossPlatform`.' . PHP_EOL . PHP_EOL;
 
         echo 'Rendering Windows Button and Checkbox: ' . PHP_EOL . PHP_EOL;
         echo $clientService->renderUI($factoryResolver->resolve('windows')) . PHP_EOL;

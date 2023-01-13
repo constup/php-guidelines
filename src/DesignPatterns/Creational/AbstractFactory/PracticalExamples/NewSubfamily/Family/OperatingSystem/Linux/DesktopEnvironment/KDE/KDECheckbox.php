@@ -27,5 +27,6 @@ class KDECheckbox implements CheckboxInterface
             'desktopEnvironment' => $this->desktopEnvironment,
         ], JSON_PRETTY_PRINT);
 
-        return 'Render Linux KDE Checkbox. ' . PHP_EOL . $result;    }
+        return 'Render Linux KDE Checkbox. ' . PHP_EOL . $result;
+    }
 }

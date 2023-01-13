@@ -27,5 +27,6 @@ class CrossPlatformCheckbox implements CheckboxInterface
             'desktopEnvironment' => $this->desktopEnvironment,
         ], JSON_PRETTY_PRINT);
 
-        return 'Render Windows CrossPlatform Checkbox. ' . PHP_EOL . $result;    }
+        return 'Render Windows CrossPlatform Checkbox. ' . PHP_EOL . $result;
+    }
 }

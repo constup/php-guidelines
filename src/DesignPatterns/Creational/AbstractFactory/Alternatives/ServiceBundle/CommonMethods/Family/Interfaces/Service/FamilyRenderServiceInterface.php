@@ -15,5 +15,4 @@ interface FamilyRenderServiceInterface
     public function renderCheckbox(CheckboxInterface $checkbox): string;
 
     public function renderScrollbar(ScrollbarInterface $scrollbar): string;
-
 }

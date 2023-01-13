@@ -15,9 +15,9 @@ class FamilyServiceBundle
     private LabelProcessingService $labelProcessingService;
 
     /**
-     * @param FamilyFactoryInterface $familyFactory
+     * @param FamilyFactoryInterface       $familyFactory
      * @param FamilyRenderServiceInterface $familyRenderService
-     * @param LabelProcessingService $labelProcessingService
+     * @param LabelProcessingService       $labelProcessingService
      */
     public function __construct(FamilyFactoryInterface $familyFactory, FamilyRenderServiceInterface $familyRenderService, LabelProcessingService $labelProcessingService)
     {

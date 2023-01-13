@@ -61,7 +61,7 @@ class ClientService
             ? $processOnlyLinuxWindowsLabelResult . PHP_EOL . PHP_EOL
             : '';
 
-        /**
+        /*
          * Commented code below is not valid, because Label Processing Service methods do not process Scrollbars.
          * This is, however, true only for this particular example implementation. You are, of course, free to use more
          * detailed type and error handling.

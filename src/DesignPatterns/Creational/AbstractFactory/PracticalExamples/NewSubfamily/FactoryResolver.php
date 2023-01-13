@@ -35,6 +35,7 @@ class FactoryResolver
                     default:
                         throw new Exception('Invalid desktop environment.');
                 }
+                // no break
             case 'linux':
                 switch ($desktopEnvironment) {
                     case null:

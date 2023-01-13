@@ -44,6 +44,7 @@ class FamilyResolver
                     default:
                         throw new Exception('Invalid desktop environment.');
                 }
+                // no break
             case 'windows':
                 switch ($desktopEnvironment) {
                     case null:
@@ -59,6 +60,7 @@ class FamilyResolver
                     default:
                         throw new Exception('Invalid desktop environment.');
                 }
+                // no break
             default:
                 throw new Exception('Invalid operating system');
         }
