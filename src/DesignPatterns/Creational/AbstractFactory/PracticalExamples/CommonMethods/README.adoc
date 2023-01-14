@@ -1,0 +1,156 @@
+= Common methods - Services and service methods which break family classification
+:stylesheet: ../../../../../../doc/css/asciidoc-style.css
+:toc:
+:toclevels: 4
+
+== 1. Introduction
+
+Abstract Factory design pattern forces classification by families and subfamilies. What if we need services and/or
+service methods which should apply only on a subset of products which belong to only a subset of families? What if these
+service methods should be exactly the same for affected products (for example: Buttons and Checkboxes)?
+
+[IMPORTANT]
+====
+*This is what breaks the Abstract Factory design pattern.*
+====
+
+== 2. Functionality as an afterthought
+
+Because of the encapsulation, Concrete Products are not only carriers of data, they are also carriers of operations in
+the Abstract Factory design pattern. When Products are separated into families, with each family member (Linux,
+Windows,...) having its own Product class, the focus is on how to organize *Products* as data carriers in order to use
+Abstract Factory. Organization, categorization and flexibility of *operations* (services, service methods) on Products
+is just an afterthought.
+
+The biggest trick of the Abstract Factory design pattern is that it still manages to provide some form of service
+classification - as a side effect of classifying Products (as data carriers) into families. Because of that trick it is
+even considered to be a quasi-reusable design pattern. But it's really not.
+
+== 3. Breaking the pattern
+
+.Tasks:
+:!example-caption:
+====
+Given the following original state of the code:
+
+* Products are organized into an "operating system" family, with 3 family members: Windows, Linux and Android.
+* There are 3 Products: Button, Checkbox and Scrollbar (present in all 3 family members).
+
+*Task 1*: Implement a functionality which is applicable to Buttons and Checkboxes only, regardless of the operating
+system.
+
+*Task 2*: Implement a functionality which is applicable to Buttons and Checkboxes only, and only on Linux.
+
+*Task 3*: Implement a functionality which is applicable to Buttons and Checkboxes only, and is applicable to Linux and
+Windows families (but not to Android).
+
+All requested functionality must be usable in the Client Service - a class which works with abstractions with its code
+having to work with all Product types of all families.
+
+Implement this by using the Abstract Factory design pattern.
+====
+
+The tasks can get even more complex - just introduce more families (for example: Architecture from the
+link:../NewFamily/[`NewFamily`] article), and/or one or more layers of subfamilies. But that's not even that important,
+because the Abstract Factory design pattern crumbles as soon as there's a mention of a feature which is applicable to
+two or more Product types (Buttons AND Checkboxes).
+
+=== 3.1. Potential solutions
+
+==== 3.1.1. Code repetition
+
+The first solution is not really a solution: implement the same method in all affected products and deal with code
+repetition. If, in the future when there is a request for a change of functionality, this duplicated code gets out of
+sync between its Product implementations - you have a problem. In more complex systems with multiple families and layers
+of subfamilies, it is difficult to find and sync everything, especially if feature documentation is missing, a different
+team member or even a different team is working on the changes compared to whoever implemented the original feature.
+This is not really an option and should be avoided at all costs.
+
+==== 3.1.2. Abstraction
+
+What OOP programmers usually end up doing in this situation is one of two things. The first one being - abstraction,
+since it's one of the core concepts of OOP (abstraction, encapsulation, inheritance, polymorphism). Abstraction in this
+simple case (from the listed _Tasks_) might look like a good idea - but only because there is only one family with 3
+subfamilies and 3 Products in total. Again, introduce more complexity and add multiple families with their own layers
+of subfamilies, and you get an *abstraction hell*.
+
+You will end up with abstract features which shouldn't be applicable to some (edge) cases and "creative" solutions how
+to mitigate the issues. You will have cases where requested features and modifications to the business logic make you
+wish for the ability for a class to have more than one parent. Whether you want it or not, random Traits will start
+appearing in the code to solve the complex abstraction issues. And all of this will happen because using abstraction to
+solve these kind of problems will inevitably force artificial abstractions of unrelated objects, just to be able to
+implement requested features. I'm just going to mention one more thing - parameter and return type hell each time a new
+abstraction is needed or the old one modified/removed.
+
+Abstraction works - when first implemented. But it's a living hell to maintain/modify it in the future. When it's first
+implemented, it gives an illusion that the job was well done and the system is robust enough to handle the changes -
+until real changes are required to be implemented. This is one of the big reasons why
+link:http://www.laputan.org/mud/[*The Big Ball of Mud*] is still one of the best and most relevant articles on software
+engineering.
+
+==== 3.1.3. Independent service classes
+
+The second solution is to create independent classes which will handle these tasks. This solution is not inherently
+wrong, but it has its problems and downsides - especially when compared to Service Bundle approach.
+
+First of all, a service like this is not listed as link:../../README.adoc#_3_components[components of the Abstract
+Factory design pattern.] which breaks the very definition of a word "pattern" directly.
+
+The service can be implemented easily, as demonstrated in the example. However, the problem comes when there is a need
+to instantiate the service and manage loading and resolution of its variations (under the same Interface). This further
+continues the need for architectural work past what's originally defined in the Abstract Factory design pattern, and
+dissolves the meaning of a word "pattern" even more.
+
+This creates a question of how the alternatives will be resolved and still be available to be used abstracted in the
+Client Service. For example, let's suppose that the default `LabelProcessingService` in the
+link:ClientService.php[`ClientService`] needs to be replaced by `MyLabelProcessingService` (implementing the same
+Interface) for Linux only. You can clearly see the problem.
+
+The last point is: If you are considering to use independent service classes, you are really leaning towards Service
+Bundle and away from Abstract Factory as a design pattern.
+
+=== 3.2. Service bundle supports common methods/services by definition
+
+Unlike Abstract Factory design pattern, Service Bundle does not make any difference between services, regardless of
+whether they are related to a family or any other classification. Services described in the Task from the beginning of
+this section are easily fitting in the link:../../Alternatives/ServiceBundle/README.adoc#_3_components[components of a
+Service Bundle].
+
+Furthermore, the Service Bundle's main purpose is to manage bundles of services used for each family member. No
+additional architectural work is needed to add a Service as the one described in the Tasks. If you take a look at the
+link:../../Alternatives/ServiceBundle/CommonMethods/Family/FamilyResolver.php[`FamilyResolver`], you can clearly see
+that it even supports any variation of the `LabelProcessingService` applied to any family member.
+
+== 4. Examples
+
+* Abstract Factory: link:./[CommonMethods]
+* Service Bundle: link:../../Alternatives/ServiceBundle/CommonMethods/[CommonMethods]
+
+=== 4.1. Running the examples
+
+The following CLI commands are available:
+
+* Abstract Factory:
+** Docker: `docker exec -it constup_php_guidelines php /usr/src/app/bin/console design-patterns:abstract-factory:practical:common-methods`
+** CLI: `php bin/console design-patterns:abstract-factory:practical:common-methods`
+* Service Bundle:
+** Docker: `docker exec -it constup_php_guidelines php /usr/src/app/bin/console design-patterns:abstract-factory:service-bundle:common-methods`
+** CLI: `php bin/console design-patterns:abstract-factory:service-bundle:common-methods`
+
+== 5 Conclusions
+
+Abstract Factory design pattern's usability ends when there is a need to implement functionality which is common to a
+specific set of products and is limited only to specific families and subfamilies. Its fixed classification by families
+is deeply rooted in code's architecture and is simply not flexible enough. Service Bundle, on the other hand, does not
+have any issues with common services and service methods which are not tied to family classification.
+
+== 6. References
+
+* [[reference-1]][1] Design Patterns: Elements of Reusable Object-Oriented Software - Erich Gamma, Richard Helm, Ralph
+Johnson, and John Vlissides - ISBN 0-201-63361-2
+
+== 7. Links
+
+link:../../[Abstract Factory]
+• link:../../../../../../doc/table_of_contents.adoc[Contents]
+• link:../../../../../../README.adoc[Home]

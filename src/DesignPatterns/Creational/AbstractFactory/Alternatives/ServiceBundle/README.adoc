@@ -44,19 +44,19 @@ Factories are producing different variations of this Product, depending on which
 Family (and subfamilies) are implemented as properties (`$operatingSystem`, `$desktopEnvironment`) of the Concrete
 Product. These classes do not have any service methods and are made of data properties and, potentially, utility methods
 (`get`, `with`,... properties).
-* *Family Service Interface* -
+* *Service Interface* -
 link:./OriginalExample/Family/Interfaces/Service/FamilyFactoryInterface.php[`FamilyFactoryInterface`],
 link:./OriginalExample/Family/Interfaces/Service/FamilyRenderServiceInterface.php[`RenderFamilyServiceInterface`] -
-Declares methods which can be used on a certain family of Products. Concrete Family Services are implementing this
-interface. This includes Factories as well as other services.
-* *Concrete Family Service* -
+Declares methods which can be used on Products. Concrete Services are implementing this interface. This includes
+Factories, family related services, as well as other services.
+* *Concrete Service* -
 link:./OriginalExample/Family/OperatingSystem/Service/Factory/LinuxFactory.php[`LinuxFactory`],
 link:./OriginalExample/Family/OperatingSystem/Service/Factory/WindowsFactory.php[`WindowsFactory`],
 link:./OriginalExample/Family/OperatingSystem/Service/Render/LinuxRenderService.php[`LinuxRenderService`],
 link:./OriginalExample/Family/OperatingSystem/Service/Render/WindowsRenderService.php[`WindowsRenderService`] - Concrete
-implementation of a Family Service Interface. Contains definitions of methods which can be used on a certain family of
-Products. Depending on the responsibility of a Concrete Family Service, it can include factory methods (if the service
-is a factory) or other service methods.
+implementation of a Service Interface. Contains definitions of methods which can be used on a Products. Depending on the
+responsibility of a Concrete Service, it can include factory methods (if the service is a factory) or other service
+methods.
 * *Service Bundle* - link:./OriginalExample/Family/FamilyServiceBundle.php[`FamilyServiceBundle`] -
 An instance of this class contains all services related to a family. You can wire up compatible services for a
 particular family during instantiation and pass the created instance to the Client Service. *Note:* Although a Service
@@ -65,13 +65,13 @@ Service Bundles can also be used for grouping services based on any classificati
 set of services which are processing only Buttons, you can group them in a Service Bundle.
 * *Client Service* - link:./OriginalExample/ClientService.php[`ClientService`] - A client service which uses an instance
 of a Family Bundle to produce and perform operations on Products. The code inside the Client Service works with service
-methods, which have their common declarations defined in the Family Service Interface, and does not know which concrete
+methods, which have their common declarations defined in the Service Interface, and does not know which concrete
 services (including factories) are used.
 * *Family Resolver* - link:./OriginalExample/Family/FamilyResolver.php[`FamilyResolver`] - Similar to the Factory
 Resolver in the original definition of Abstract Factory design pattern, Family Factory resolver resolves which Concrete
-Family Services will be passed to the Client Service. The product of the resolver is a wired up instance of a Family
-Bundle which is then passed to a Client Service. This can either be a separate class (as in our example) or it can be
-wired up in the Dependency Injection Container (which, again, generates and caches a resolver class).
+Services will be passed to the Client Service. The product of the resolver is a wired up instance of a Family Bundle
+which is then passed to a Client Service. This can either be a separate class (as in our example) or it can be wired up
+in the Dependency Injection Container (which, again, generates and caches a resolver class).
 
 === 3.1. Optional components
 
@@ -101,8 +101,8 @@ of property definitions, constructors and utility methods(`getProperty()`, `with
 like in the Abstract Factory design pattern.
 
 On the other hand, you are completely free to create and use multiple unrelated families with objects which have
-different properties - and still use the same Family Service Interfaces. You can do that *only when and if needed*. Take
-a look at the link:./NewFamily[`NewFamily`] example for more details.
+different properties - and still use the same Service Interfaces. You can do that *only when and if needed*. Take a look
+at the link:./NewFamily[`NewFamily`] example for more details.
 
 ==== 4.1.2. Architectural consistency
 

@@ -13,6 +13,13 @@ use App\DesignPatterns\Creational\AbstractFactory\Alternatives\ServiceBundle\Com
 use App\DesignPatterns\Creational\AbstractFactory\Alternatives\ServiceBundle\CommonMethods\Family\OperatingSystem\Service\Render\WindowsRenderService;
 use Exception;
 
+/**
+ * NOTE: An example listed here instantiates a new instance of LabelProcessingService for each of the family members.
+ * This is just an example implementation to demonstrate that you can use different services for each of the family
+ * members. You can replace LabelProcessingService with MyLabelProcessingService, which implements the same interface,
+ * and use different business logic for a specific family member. There are other ways to organize service loading, but
+ * that is not the topic here.
+ */
 class FamilyResolver
 {
     public function resolve(
