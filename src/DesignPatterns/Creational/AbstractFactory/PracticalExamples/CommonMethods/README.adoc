@@ -141,8 +141,12 @@ The following CLI commands are available:
 
 Abstract Factory design pattern's usability ends when there is a need to implement functionality which is common to a
 specific set of products and is limited only to specific families and subfamilies. Its fixed classification by families
-is deeply rooted in code's architecture and is simply not flexible enough. Service Bundle, on the other hand, does not
-have any issues with common services and service methods which are not tied to family classification.
+is deeply rooted in code's architecture and is simply not flexible enough. Additional code and architectural structures,
+which are not present in the Abstract Factory design pattern, are needed in order to implement this type of
+functionality.
+
+Service Bundle, on the other hand, does not have any issues with common services and service methods which are not tied
+to family classification. It supports it out of the box and has a structured way to handle dependencies.
 
 == 6. References
 
