@@ -1,0 +1,118 @@
+= Adding a new property
+:stylesheet: ../../../../../../doc/css/asciidoc-style.css
+:toc:
+:toclevels: 4
+
+== 1. Abstract Factory
+
+====
+*Examples:*
+
+* The original state of the objects: link:../OriginalExample[OriginalExample]
+** Products: `Button`, `Checkbox`;
+** Family:
+*** Operating system (`Linux`, `Windows`);
+* Adding a new property: link:./[AddProperty]
+** Added property `addedProperty` to Buttons
+====
+
+=== 1.1. New files
+
+None.
+
+=== 1.2. Modifications
+
+* Add a new property (`addedProperty`) to *Concrete Products* of all families (`LinuxButton`, `WindowsButton`);
+* Modify *Abstract Factory* interface to support modifications in the Concrete Factories (add `addedProperty` to
+ `produceButton()` method definition).
+* Modify *Concrete Factories* of all families (`LinuxFactory`, `WindowsFactory`) and add a new property to producer
+methods for the modified product (`produceButton()`).
+* Any *client code* which is using the modified product must be refactored to support the new property.
+
+=== 1.3. Unchanged
+
+* Concrete Products which didn't get a new property (`LinuxCheckbox`, `WindowsCheckbox`).
+* All methods related to unmodified products in Concrete Factories of families and the Abstract Factory
+ (`produceCheckBox()`).
+* `FactoryResolver`.
+
+=== 1.4. Conclusion
+
+Adding a property to a Product requires several modifications of the existing code regardless of what approach is used.
+Abstract Factory does not solve or mitigate this problem. In fact, it enlarges the problem by introducing product
+families and forcing creation of separate Concrete Product classes for each family member, regardless of whether family
+members of a single family (Linux Buttons, Windows Buttons) have the same properties or not. Instead of modifying a
+single Product class and its Factory, and refactoring client code to support the new attribute, modifications are also
+needed to:
+
+* all Product classes of all family members (`LinuxButton`, `WindowsButton`, `AndroidButton`, `MacOSButton`,…);
+* all Concrete Factories of all families (`LinuxFactory`, `WindowsFactory`, `AndroidFactory`, `MacOSFactory`);
+* client code which uses all of these objects belonging to families.
+
+The problem grows each time new family members, new families or subfamilies are introduced.
+
+== 2. Service Bundle
+
+====
+*Examples:*
+
+* The original state of the objects: link:../../Alternatives/ServiceBundle/OriginalExample[OriginalExample]
+** Products: `Button`, `Checkbox`;
+** Family:
+*** Operating system (`Linux`, `Windows`);
+* Adding a new property: link:../../Alternatives/ServiceBundle/AddProperty[AddProperty]
+** Added property `addedProperty` to Buttons
+====
+
+=== 2.1. New files
+
+None.
+
+=== 2.2. Modifications
+
+* Add a new property (`addedProperty`) to *Concrete Product* class
+(link:../../Alternatives/ServiceBundle/AddProperty/Family/OperatingSystem/Product/Button.php[`Button`]).
+* Modify link:../../Alternatives/ServiceBundle/AddProperty/Family/Interfaces/Service/FamilyFactoryInterface.php[`FamilyFactoryInterface`]
+to support the new property being passed from Concrete Factories to Product constructors.
+* Modify *Concrete Factories*
+(link:../../Alternatives/ServiceBundle/AddProperty/Family/OperatingSystem/Service/Factory/LinuxFactory.php[`LinuxFactory`]),
+(link:../../Alternatives/ServiceBundle/AddProperty/Family/OperatingSystem/Service/Factory/WindowsFactory.php[`WindowsFactory`])
+of all families and add a new property to producer methods for the modified Product. (`produceButton()`).
+* Any *client code* which is using the modified product must be refactored to support the new property.
+
+=== 2.3. Unchanged
+
+* Concrete Products which didn't get a new property (`Checkbox`).
+* All methods related to unmodified products in Concrete Factories of families and the Abstract Factory
+ (`produceCheckBox()`).
+* All services which are not Factories (`LinuxRenderService`, `WindowsRenderService`).
+* `FamilyServiceBundle`.
+* `FamilyResolver`.
+
+=== 2.4. Conclusion
+
+Compared to Abstract Factory approach, adding a property to a Product in the Service Bundle approach usually requires
+fewer modifications of the existing code. This is because Concrete Products, as data carriers, are created in Service
+Bundle only when needed - when they have different properties from the rest of the classes in a family. Worst case
+scenario for a Service Bundle is to have all Concrete Data Products different, in which case the number of changes is
+equal to the number of changes in Abstract Factory design pattern.
+
+The amount of the required changes in the service methods (`render()`) are the same in both Abstract Factory and Service
+Bundle.
+
+== 3. Running the examples
+
+The following CLI commands are available:
+
+* Abstract Factory:
+** Docker: `docker exec -it constup_php_guidelines php /usr/src/app/bin/console design-patterns:abstract-factory:practical:add-property`
+** CLI: `php bin/console design-patterns:abstract-factory:practical:add-property`
+* Service Bundle:
+** Docker: `docker exec -it constup_php_guidelines php /usr/src/app/bin/console design-patterns:abstract-factory:service-bundle:add-property`
+** CLI: `php bin/console design-patterns:abstract-factory:service-bundle:add-property`
+
+== 4. Links
+
+link:../../[Abstract Factory]
+• link:../../../../../../doc/table_of_contents.adoc[Contents]
+• link:../../../../../../README.adoc[Home]

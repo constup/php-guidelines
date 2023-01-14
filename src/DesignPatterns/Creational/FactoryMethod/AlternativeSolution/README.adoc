@@ -1,0 +1,49 @@
+= Alternative solution
+:stylesheet: ../../../../../doc/css/asciidoc-style.css
+:toc:
+:toclevels: 4
+
+This is an alternative solution to all problems which Factory Method is trying to solve. In addition to providing the
+same results, this solution offers more flexibility and avoids many problems Factory Methods have.
+
+[IMPORTANT]
+====
+*Please note*: This is only *one* example of a better reusable alternative solution and is in no way the only one.
+====
+
+* Service Interface only defines that one of its properties is a Factory Interface. Concrete Services (implementing the
+ Service Interface) are not only free to use whatever method they need from Concrete Factories, but are also free to
+ choose which Concrete Factories they will use as well.
+
+* It's easy to extend this code, even if it's bundled in a library. If you load a code like this from a library, you can
+ extend it in your application by simply implementing new Concrete Services (from the Service Interface). You can
+ extend the list of available Concrete Factories by implementing a new Concrete Factory (from the Factory Interface).
+ Finally, you can also extend a Concrete Factory from the library and add more features.
+
+* Single responsibility. Object creation is now separated into dedicated Factories. You can easily use these Factories
+ and all of their methods in any class you like. No code duplication and no unnecessary dependencies. The problem with
+ having multiple different Creators and their child Concrete Creators, where you want to re-use a Factory Method from
+ one Concrete Creator inside another one belonging to a different parent Creator - is eliminated.
+
+Concrete Services are not responsible for creating objects which they want to use. They contain only methods which are
+ relevant to their primary purpose.
+
+* You are free to add as many methods as you need in the Factory Interface and Concrete Factories to cover as many ways
+ of creating Products as you need.
+
+* You can easily find the exact object creation implementation that you need - it's in a dedicated Concrete Factory.
+
+* Dependency inversion. Concrete Services do not depend on Concrete Factories. Creation of Concrete Services can easily
+ be delegated to a Service Container (Dependency Injection Container), or they can be instantiated manually if and when
+ needed somewhere else in the code.
+
+[NOTE]
+====
+Although methods inside Concrete Factories have the same implementation as Factory Methods, this is *not* just another
+implementation of a Factory Method Design Pattern.
+
+Factory Method design Pattern is based on Creators (or Services in this particular alternative solution example) which
+have their own purpose and responsibilities. Factory Methods are then implemented in them. As explained in the main
+link:../README.adoc[README], Factory Method Design Pattern does not define the contents of the Factory Methods - it only
+defines a way to inject object creation into concrete classes which have their own functionality.
+====

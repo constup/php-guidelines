@@ -1,0 +1,16 @@
+= Warning signs
+:stylesheet: ../../doc/css/asciidoc-style.css
+:toc:
+:toclevels: 4
+
+Warning signs are either pure bad practices or practices which have a potential to evolve the code into a bad state.
+These are the things which you might do or find inside the code base and are not related to any design pattern or
+programming principles.
+
+== 1. Articles
+
+* link:./FinalClasses[Final classes]
+
+== 2. Links
+
+link:../../doc/table_of_contents.adoc[Contents] • link:../../README.adoc[Home]

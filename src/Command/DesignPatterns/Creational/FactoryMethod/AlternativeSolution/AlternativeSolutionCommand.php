@@ -21,7 +21,7 @@ class AlternativeSolutionCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         /**
-         * You will probably want to instantiate Concrete Factories and Services in another way, either somewhere else
+         * You probably want to instantiate Concrete Factories and Services in another way, either somewhere else
          * inside your code or in the Dependency Injection Container.
          */
         $factory = new Factory1();

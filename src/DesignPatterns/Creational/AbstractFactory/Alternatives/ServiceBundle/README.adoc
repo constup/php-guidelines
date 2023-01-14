@@ -1,0 +1,178 @@
+= Service Bundle - services and immutable objects
+:stylesheet: ../../../../../../doc/css/asciidoc-style.css
+:toc:
+:toclevels: 4
+
+== 1. Introduction
+
+An alternative approach, which can solve some problems introduced by the theoretical definition of Abstract Factory
+design pattern, eliminates encapsulation and uses an architecture based on immutable data objects and service classes.
+This approach also solves problems with the responsibility of the design pattern itself.
+
+== 2. Definition
+
+____
+A bundle of services grouped together, for easier use in other places in the code. Grouping and classification of
+objects of the same type is based on values of their properties.
+
+A Service Bundle provides a way to separate the application into flows, with each flow having its own set of services
+working with different types and variations of immutable data objects. Flows can then be implemented into a Client
+Service, which isolates internal implementation of services and data objects in the flow from the rest of the
+application. The rest of the application can then use Client Services  to create, use and manipulate data objects
+without knowing the internal implementation of bundled services or data objects.
+____
+
+[NOTE]
+====
+Please note that bundling of services is not limited to families only (in the original sense of the word taken from
+Abstract Factories). A Service Bundle is a lot more flexible.
+====
+
+[NOTE]
+====
+Please note that Service Bundle is *not* a creational design pattern, as Abstract Factory claims to be. It works with
+any type of service, not only factories.
+====
+
+[#_3_components]
+== 3. Components
+
+* *Concrete Immutable Data Product* - link:./OriginalExample/Family/OperatingSystem/Product/Button.php[`Button`],
+link:./OriginalExample/Family/OperatingSystem/Product/Button.php[`Checkbox`] - An immutable data class which represents an
+equivalent of a Concrete Product in the original definition of the Abstract Factory design pattern. Concrete Family
+Factories are producing different variations of this Product, depending on which family the produced object belongs to.
+Family (and subfamilies) are implemented as properties (`$operatingSystem`, `$desktopEnvironment`) of the Concrete
+Product. These classes do not have any service methods and are made of data properties and, potentially, utility methods
+(`get`, `with`,... properties).
+* *Service Interface* -
+link:./OriginalExample/Family/Interfaces/Service/FamilyFactoryInterface.php[`FamilyFactoryInterface`],
+link:./OriginalExample/Family/Interfaces/Service/FamilyRenderServiceInterface.php[`RenderFamilyServiceInterface`] -
+Declares methods which can be used on Products. Concrete Services are implementing this interface. This includes
+Factories, family related services, as well as other services.
+* *Concrete Service* -
+link:./OriginalExample/Family/OperatingSystem/Service/Factory/LinuxFactory.php[`LinuxFactory`],
+link:./OriginalExample/Family/OperatingSystem/Service/Factory/WindowsFactory.php[`WindowsFactory`],
+link:./OriginalExample/Family/OperatingSystem/Service/Render/LinuxRenderService.php[`LinuxRenderService`],
+link:./OriginalExample/Family/OperatingSystem/Service/Render/WindowsRenderService.php[`WindowsRenderService`] - Concrete
+implementation of a Service Interface. Contains definitions of methods which can be used on a Products. Depending on the
+responsibility of a Concrete Service, it can include factory methods (if the service is a factory) or other service
+methods.
+* *Service Bundle* - link:./OriginalExample/Family/FamilyServiceBundle.php[`FamilyServiceBundle`] -
+An instance of this class contains all services related to a family. You can wire up compatible services for a
+particular family during instantiation and pass the created instance to the Client Service. *Note:* Although a Service
+Bundle is used to hold services related to a particular family of products in the link:./OriginalExample[Original Example],
+Service Bundles can also be used for grouping services based on any classification. For example, if you want to have a
+set of services which are processing only Buttons, you can group them in a Service Bundle.
+* *Client Service* - link:./OriginalExample/ClientService.php[`ClientService`] - A client service which uses an instance
+of a Family Bundle to produce and perform operations on Products. The code inside the Client Service works with service
+methods, which have their common declarations defined in the Service Interface, and does not know which concrete
+services (including factories) are used.
+* *Family Resolver* - link:./OriginalExample/Family/FamilyResolver.php[`FamilyResolver`] - Similar to the Factory
+Resolver in the original definition of Abstract Factory design pattern, Family Factory resolver resolves which Concrete
+Services will be passed to the Client Service. The product of the resolver is a wired up instance of a Family Bundle
+which is then passed to a Client Service. This can either be a separate class (as in our example) or it can be wired up
+in the Dependency Injection Container (which, again, generates and caches a resolver class).
+
+=== 3.1. Optional components
+
+Since the introduction of link:https://php.watch/versions/8.0/union-types[union types], grouping Products by using
+Interfaces became optional. Of course, it still is useful in many cases to use Interfaces.
+
+* *Product Interface* - link:./OriginalExample/Family/Interfaces/Product/ButtonInterface.php[`ButtonInterface`],
+link:./OriginalExample/Family/Interfaces/Product/CheckboxInterface.php[`CheckboxInterface`] - Product Interfaces are
+blank "marker" interfaces which serve one purpose - to classify Products by their type. Since Service Bundle have a
+capability to have only one Concrete Product, if Product's properties are the same between families and subfamilies
+Service Bundle will have only one Concrete Product for all families and subfamilies. However, when there are slight
+differences between properties in different families, Product Interface can be used to mark and group Concrete Products
+with a common Interface. They are also used when there is a need to create more complex classifications of Products in
+order to implement features which are common to only a specific set of families, subfamilies and/or family members.
+Concrete Products are implementing these interfaces.
+
+== 4. Benefits and problems
+
+=== 4.1. Benefits
+
+==== 4.1.1. A single class for all objects with the same properties
+
+Classification of objects based on the value of their properties is done where it should be done - at runtime. This
+enables using *a single class* for all objects of a specific Product belonging to a family, if the properties of
+(theoretical) Products belonging to different families and/or subfamilies are the same. There is no forced duplication
+of property definitions, constructors and utility methods(`getProperty()`, `withProperty()`,… if you are using them),
+like in the Abstract Factory design pattern.
+
+On the other hand, you are completely free to create and use multiple unrelated families with objects which have
+different properties - and still use the same Service Interfaces. You can do that *only when and if needed*. Take a look
+at the link:./NewFamily[`NewFamily`] example for more details.
+
+==== 4.1.2. Architectural consistency
+
+Factories are services like any other. This is why `FamilyFactoryInterface` and `RenderFamilyServiceInterface`, along
+with their concrete implementations, are architecturally fundamentally the same. One produces objects
+(`produceButton()`, `produceCheckbox()`), while the other performs some other operation over objects (`renderButton()`,
+`renderCheckbox()`). This promotes consistency in the code. If a new service needs to be implemented, you have the exact
+way how to do it properly just by looking at the implementation of Factories (or other services).
+
+Contrary to Service Bundles, Abstract Factory design pattern promotes the use of encapsulation - but it's not even
+consistent at doing that. Factories, even though they are services like any other, are treated as a special case, while
+other operations over an object are encapsulated within the Concrete Product class.
+
+Additionally, any operation on any set or subset of objects can be done by using <<_3_components, Components described
+in Section 3>>. Theoretical definition of Abstract Factories, on the other hand, does not support operations on objects
+of different types and more complex grouping of operations on objects.
+
+==== 4.1.3. Truly implements and promotes single responsibility of classes and interfaces
+
+Unlike the original Abstract Factory design pattern implemented with encapsulation, this approach truly separates
+classes and interfaces by their responsibility. Multiple different and unrelated services, each of them potentially with
+their own dependencies and support methods, are not crammed up in a single Concrete Product class. They are separated
+into their own classes, without sacrificing the ability of a Client Service to use them, and without introducing
+additional resolvers.
+
+==== 4.1.4. Single responsibility of a design pattern
+
+In practice, the Abstract Factory design pattern is both responsible for creating objects and managing (classifying)
+services, by forcing them into same (family) classes - but its defined as a Creational Design Pattern. This breaks
+single responsibility of the design pattern itself and introduces problems. Service Bundle, on the other hand, is just
+that - a bundle of services grouped together for easier use in other places in the code.
+
+==== 4.1.5. Direct serialization without meta-data
+
+By including the family name property in the definition of Service Bundles, direct serialization, deserialization,
+normalization and denoramlization are possible, without depending on external parameters.
+
+== 5. Key Features
+
+In order for the Service Bundle to be a viable alternative to the Abstract Factory design pattern, it must have the same
+set of key features (listed link:../../README.adoc#_5_key_fetures[here] for the Abstract Factory design pattern).
+
+* Object creation and use is separated from the rest of the code, with Client Service acting as a proxy.
+* A single parameter (`FamilyServiceBundle`) passed to a Client Service for the whole family of objects is all the
+information needed to run Client Service's methods.
+* A single resolver is used to define the flow and classes which will be used in the Client Service.
+* Client Service is able to create and use all types of objects in the family and subfamilies.
+* Client Service method definition does not change when adding a new:
+** property to Concrete Products;
+** family member;
+** family;
+** product;
+** subfamily;
+* Ability to categorize objects and determine their families and subfamilies at runtime.
+* Can use default serializers/deserializers, normalizers/denormalizers.
+* Types of objects can be identified in other data formats (JSON, CSV, XML,…)
+
+== 6. Conclusions
+
+Service Bundle is a better defined, more suitably named, more flexible and more powerful alternative to Abstract
+Factories. It provides the same set of key features without changing the way it's used by the rest of the code (compared
+to Abstract Factory). The examples provided in this repository are showing that Service Bundle can perform the same
+operations and provide support for the same expansions and modification of Products and Services as the Abstract Factory
+does, without being inferior to Abstract Factories in any situation. In fact, it also supports grouping and
+classification of services in much more general way, compared to Abstract Factory design pattern and its fixed grouping
+by a single (family) attribute. Service Bundle also promotes architectural consistency and single responsibility of
+Services.
+
+== 7. Links
+
+link:../../[Abstract Factory]
+• link:../../../../../../doc/table_of_contents.adoc[Table of contents]
+• link:../../../../../../README.adoc[Home]

@@ -1,0 +1,102 @@
+= New Family
+:stylesheet: ../../../../../../doc/css/asciidoc-style.css
+:toc:
+:toclevels: 4
+
+== 1. Abstract Factory
+
+====
+*Examples:*
+
+* The original state of the objects: link:../OriginalExample[OriginalExample]
+** Products: `Button`, `Checkbox`
+** Family:
+*** Operating system (`Linux`, `Windows`);
+* Adding a new family: link:./[NewFamily]
+** Added a new top-level family based on `Architecture`. Added two Architecture family members: `X86` and `Arm`.
+** The `Architecture` family of Concrete Products share the same properties with the `OperatingSystem` family, as
+ defined in the `AbstractFactory` interface. This allows both families to be handled by the single
+ `AbstractFactory`.
+** Compared to the `OperatingSystem` family, Concrete Products in the `Architecture` family do not have the
+ `operatingSystem` property. Their classification is based on their own `architecture` property.
+====
+
+=== 1.1. New files
+
+* New Concrete Products (`X86Button`, `X86Checkbox`, `ArmButton`, `ArmCheckbox`) for all `Architecture` family members:
+ `X86` and `Arm`.
+* New Concrete Factories (`X86Factory`, `ArmFactory`) for all `Architecture` family members: `X86` and `Arm`.
+
+=== 1.2. Modifications
+
+* In order to cover a new family, `FactoryResolver` must now support two parameters: `operatingSystem` and
+ `architecture`. You can nest the switches in the resolver in order to cover both families.
+
+=== 1.3. Unchanged
+
+* All the existing code, except `FactoryResolver`.
+
+=== 1.4. Conclusion
+
+Except for the `FactoryResolver`, there is no impact on the existing code when adding a new family. However, although
+Concrete Products in `X86` and `Arm` have the same properties, their classes must be implemented separately.
+
+== 2. Service Bundle
+
+====
+*Examples:*
+
+* The original state of the objects: link:../../Alternatives/ServiceBundle/OriginalExample[OriginalExample]
+** Products: Button, Checkbox;
+** Family:
+*** Operating system (Linux, Windows);
+* Adding a new family: link:../../Alternatives/ServiceBundle/NewFamily[NewFamily]
+** Added a new top-level family based on `Architecture`. Added two Architecture family members: `X86` and `Arm`.
+** The `Architecture` family of Concrete Products share the set of base properties with the `OperatingSystem` family.
+** Compared to the `OperatingSystem` family, Concrete Products in the `Architecture` family do not have the
+ `operatingSystem` property. Their classification is based on their own `architecture` property.
+====
+
+=== 2.1. New files
+
+* Create one new Product (`Button`, `Checkbox`), per distinct set of properties it holds, in the new family
+ (`Architecture`). If the properties of family members (imagine `X86` and `Arm` Buttons and Checkboxes) are the same,
+ only one Product class is needed per Product.
+* New Concrete Factory (`X86Factory`, `ArmFactory`) for each `Architecture` family member: `X86` and `Arm`.
+* New Service classes (`X86RenderService`, `ArmRenderService`) for each `Architecture` family member: `X86` and `Arm`.
+
+=== 2.2. Modifications
+
+* In order to cover a new family, `FactoryResolver` must now support two parameters: `operatingSystem` and
+ `architecture`. You can nest the switches in the resolver in order to cover both families.
+
+=== 2.3. Unchanged
+
+* All the existing code, except `FactoryResolver`.
+
+=== 2.4. Conclusion
+
+Except for the `FactoryResolver`, there is no impact on the existing code when adding a new family. If Products
+(Buttons, Checkboxes) do not have different properties between family members (`X86`, `Arm`), only one new Product class
+per product is needed. This eliminates code repetition that Abstract Factory is suffering from.
+
+One more difference compared to Abstract Factories is the need to create new Service Classes for each of the new family
+members. This, however, is *not* code repetition, because each of the classes and methods inside them have their own
+unique implementations. The amount of service methods is the same as in the Abstract Factory - they are just grouped
+together into Service Classes, instead of being written in Concrete Products along with other service methods (creating
+"monster classes").
+
+== 3. Running the examples
+
+The following CLI commands are available:
+
+* Abstract Factory:
+** Docker: `docker exec -it constup_php_guidelines php /usr/src/app/bin/console design-patterns:abstract-factory:practical:new-family`
+** CLI: `php bin/console design-patterns:abstract-factory:practical:new-family`
+* Service Bundle:
+** Docker: `docker exec -it constup_php_guidelines php /usr/src/app/bin/console design-patterns:abstract-factory:service-bundle:new-family`
+** CLI: `php bin/console design-patterns:abstract-factory:service-bundle:new-family`
+
+== 4. Links
+
+link:../../[Abstract Factory] • link:../../../../../../doc/table_of_contents.adoc[Contents] • link:../../../../../../README.adoc[Home]

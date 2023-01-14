@@ -1,4 +1,5 @@
 = PHP Guidelines
+:stylesheet: doc/css/asciidoc-style.css
 
 PHP development guidelines repository with examples. This includes, but is not limited to:
 
@@ -17,7 +18,21 @@ convenience. The samples are written in pure PHP and are applicable to any PHP f
 
 == Table of contents
 
-link:./doc/table_of_contents.md[Table of contents] is available on a separate page.
+link:./doc/table_of_contents.adoc[Table of contents] is available on a separate page.
+
+== How to use this repository
+
+The best way to use this repository is to clone it and open it in an IDE. AsciiDoc documentation and PHP examples are
+being written in link:https://www.jetbrains.com/phpstorm/[PHPStorm] with
+link:https://plugins.jetbrains.com/plugin/7391-asciidoc[AsciiDoc] plugin. It is recommended to use PHPStorm and AsciiDoc
+plugin for the best experience.
+
+The documentation uses custom CSS for AsciiDoc rendering. If the documentation text is not rendered correctly in your
+IDE, make sure that the following configuration is set:
+
+* File > Settings... > Languages & Frameworks > AsciiDoc
+** Preview browser: JCEF Browser
+** Safe mode: UNSAFE
 
 == Running the examples
 
@@ -27,17 +42,17 @@ can clone this repository and use it on your local machine.
 There are two ways of running the examples:
 
 * On your local machine
-* You need to have PHP 8.1 installed and active. Check it by running `php -v`.
-* Your local PHP installation must be able to run Symfony 6.
-* Run (in root directory of the cloned repository):
+** You need to have PHP 8.1 installed and active. Check it by running `php -v`.
+** Your local PHP installation must be able to run Symfony 6.
+** Run (in root directory of the cloned repository):
 [source,shell]
 ----
 composer install
 ----
 
 * Inside a Docker container
-* You need to have Docker installed and running.
-* Run (in root directory of the cloned repository):
+** You need to have Docker installed and running.
+** Run (in root directory of the cloned repository):
 [source,shell]
 ----
 docker-compose up --build
