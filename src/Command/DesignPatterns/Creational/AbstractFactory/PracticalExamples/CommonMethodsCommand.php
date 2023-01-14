@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace App\Command\DesignPatterns\Creational\AbstractFactory\PracticalExamples;
 
 use App\DesignPatterns\Creational\AbstractFactory\PracticalExamples\CommonMethods\ClientService;
-use App\DesignPatterns\Creational\AbstractFactory\PracticalExamples\CommonMethods\CommonServices\LabelProcessingService;
+use App\DesignPatterns\Creational\AbstractFactory\PracticalExamples\CommonMethods\Common\LabelProcessingService;
 use App\DesignPatterns\Creational\AbstractFactory\PracticalExamples\CommonMethods\FactoryResolver;
 use Exception;
 use Symfony\Component\Console\Attribute\AsCommand;
