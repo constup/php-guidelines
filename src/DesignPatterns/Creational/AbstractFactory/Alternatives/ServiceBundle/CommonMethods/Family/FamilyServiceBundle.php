@@ -4,9 +4,9 @@ declare(strict_types = 1);
 
 namespace App\DesignPatterns\Creational\AbstractFactory\Alternatives\ServiceBundle\CommonMethods\Family;
 
+use App\DesignPatterns\Creational\AbstractFactory\Alternatives\ServiceBundle\CommonMethods\Common\LabelProcessingService;
 use App\DesignPatterns\Creational\AbstractFactory\Alternatives\ServiceBundle\CommonMethods\Family\Interfaces\Service\FamilyFactoryInterface;
 use App\DesignPatterns\Creational\AbstractFactory\Alternatives\ServiceBundle\CommonMethods\Family\Interfaces\Service\FamilyRenderServiceInterface;
-use App\DesignPatterns\Creational\AbstractFactory\Alternatives\ServiceBundle\CommonMethods\Family\OperatingSystem\Service\Common\LabelProcessingService;
 
 class FamilyServiceBundle
 {
@@ -43,7 +43,7 @@ class FamilyServiceBundle
     }
 
     /**
-     * @return LabelProcessingService
+     * @return \App\DesignPatterns\Creational\AbstractFactory\Alternatives\ServiceBundle\CommonMethods\Common\LabelProcessingService
      */
     public function getLabelProcessingService(): LabelProcessingService
     {
