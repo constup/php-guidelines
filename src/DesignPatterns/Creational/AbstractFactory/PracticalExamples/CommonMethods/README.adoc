@@ -93,7 +93,7 @@ engineering.
 The second solution is to create independent classes which will handle these tasks. This solution is not inherently
 wrong, but it has its problems and downsides - especially when compared to Service Bundle approach.
 
-First of all, a service like this is not listed as link:../../README.adoc#_3_components[components of the Abstract
+First of all, a service like this is not listed as link:../../README.adoc#_3_components[a component of the Abstract
 Factory design pattern.] which breaks the very definition of a word "pattern" directly.
 
 The service can be implemented easily, as demonstrated in the example. However, the problem comes when there is a need
