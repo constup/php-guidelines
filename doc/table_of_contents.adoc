@@ -17,6 +17,7 @@
 **** link:../src/DesignPatterns/Creational/AbstractFactory/PracticalExamples/NewFamilyMember/[New family member]
 **** link:../src/DesignPatterns/Creational/AbstractFactory/PracticalExamples/NewProduct/[New product]
 **** link:../src/DesignPatterns/Creational/AbstractFactory/PracticalExamples/NewSubfamily/[New subfamily]
+**** link:../src/DesignPatterns/Creational/AbstractFactory/PracticalExamples/CommonMethods/[Common methods]
 *** link:../src/DesignPatterns/Creational/AbstractFactory/Alternatives/ServiceBundle[Service Bundle alternative]
 **** Working with Service Bundles (documentation articles available in Abstract Factory)
 ***** link:../src/DesignPatterns/Creational/AbstractFactory/Alternatives/ServiceBundle/AddProperty/[Add property]
