@@ -32,7 +32,7 @@ class AddPropertyCommand extends Command
     protected function execute(
         InputInterface $input,
         OutputInterface $output
-    ) {
+    ): int {
         /**
          * You probably want to instantiate Services in another way, either somewhere else inside your code or in
          * the Dependency Injection Container.

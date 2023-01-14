@@ -10,7 +10,8 @@ class ClientService
 {
     public function __construct(
         public readonly LabelProcessingService $labelProcessingService,
-    ) {}
+    ) {
+    }
 
     public function renderUI(
         AbstractFactory $factory,

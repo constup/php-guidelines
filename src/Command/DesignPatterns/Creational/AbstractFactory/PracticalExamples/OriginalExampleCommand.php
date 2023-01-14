@@ -6,6 +6,7 @@ namespace App\Command\DesignPatterns\Creational\AbstractFactory\PracticalExample
 
 use App\DesignPatterns\Creational\AbstractFactory\PracticalExamples\OriginalExample\ClientService;
 use App\DesignPatterns\Creational\AbstractFactory\PracticalExamples\OriginalExample\FactoryResolver;
+use Exception;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -24,11 +25,11 @@ class OriginalExampleCommand extends Command
      * @param InputInterface  $input
      * @param OutputInterface $output
      *
-     * @throws \Exception
+     * @throws Exception
      *
      * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         /**
          * You probably want to instantiate Services in another way, either somewhere else inside your code or in

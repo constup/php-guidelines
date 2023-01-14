@@ -14,8 +14,8 @@ use Exception;
 class FactoryResolver
 {
     /**
-     * @param string $operatingSystem
-     * @param string $desktopEnvironment
+     * @param string      $operatingSystem
+     * @param string|null $desktopEnvironment
      *
      * @throws Exception
      *
