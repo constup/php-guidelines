@@ -3,6 +3,25 @@
 :toc:
 :toclevels: 4
 
+== Sub-articles table of contents
+
+* link:./doc/family_name_property.adoc[Family name property]
+* Working with Abstract Factories (includes documentation articles)
+** link:./PracticalExamples/AddProperty/[Add property]
+** link:./PracticalExamples/NewFamily/[New family]
+** link:./PracticalExamples/NewFamilyMember/[New family member]
+** link:./PracticalExamples/NewProduct/[New product]
+** link:./PracticalExamples/NewSubfamily/[New subfamily]
+** link:./PracticalExamples/CommonMethods/[Common methods]
+* link:./Alternatives/ServiceBundle[Service Bundle alternative]
+** Working with Service Bundles (documentation articles available in Abstract Factory)
+*** link:./Alternatives/ServiceBundle/AddProperty/[Add property]
+*** link:./Alternatives/ServiceBundle/NewFamily/[New family]
+*** link:./Alternatives/ServiceBundle/NewFamilyMember/[New family member]
+*** link:./Alternatives/ServiceBundle/NewProduct/[New product]
+*** link:./Alternatives/ServiceBundle/NewSubFamily/[New subfamily]
+*** link:./Alternatives/ServiceBundle/CommonMethods/[Common methods]
+
 == 1. Definition
 
 ____
@@ -284,6 +303,27 @@ Service Bundle is a completely viable alternative, which also solves some proble
 about it in a dedicated link:Alternatives/ServiceBundle/[Service Bundle] article.
 
 == 9. Conclusions
+
+Abstract Factory design pattern seems like a creative and effective way to manage families of products, but it really is
+not. It is a half-way implemented Service Bundle which has many architectural and practical limitations. Working around
+these limitations, if at all possible, is difficult and can lead, in many cases, to code quality degradation over time.
+By using encapsulation, as defined in OOP theory, it also promotes creation of monster classes with multiple
+responsibilities without any defined, structured way to handle the complexity and modularize the code.
+
+It has an incomplete definition (missing family name property, missing inclusion of Family Resolver in its list of
+components), and is named contrary to any logic or standards.
+
+Abstract Factory design pattern suffers form architectural inconsistency - it uses and promotes encapsulation, but at
+the same time recommends treating Factories as special cases (separate services). It is defined as a creational design
+pattern, but also manages service (functionality) classification as a side effect.
+
+Code architecture is forced to follow a fixed family classification and is not flexible enough to properly support
+functionality which breaks this classification. Real-world usability is, thus, limited.
+
+It also suffers from unnecessary code repetition.
+
+This article and its sub-articles have demonstrated, through practical examples, that using a Service Bundle is a much
+more effective, more flexible and more practical way to achieve the same things as Abstract Factory.
 
 == 10. References
 

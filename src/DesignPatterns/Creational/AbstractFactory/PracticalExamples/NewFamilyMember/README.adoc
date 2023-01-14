@@ -69,7 +69,7 @@ whether the properties are exactly the same as in other family members or not.
 
 Service Bundle approach not only has the same level of convenience when it comes to implementing a new family member as
 Abstract Factory approach does - it also eliminates the need to repeat implementation of properties, a constructor and
-utility methods (get, set, with,…) if the set of properties is the same as in other family members.
+utility methods (get, with,…) if the set of properties is the same as in other family members.
 
 == 3. Running the examples
 

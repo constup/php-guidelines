@@ -146,7 +146,7 @@ which are not present in the Abstract Factory design pattern, are needed in orde
 functionality.
 
 Service Bundle, on the other hand, does not have any issues with common services and service methods which are not tied
-to family classification. It supports it out of the box and has a structured way to handle dependencies.
+to family classification. It supports them out of the box and has a structured way to handle dependencies.
 
 == 6. References
 
