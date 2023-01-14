@@ -10,6 +10,9 @@ use Exception;
 
 class FactoryResolver
 {
+    /**
+     * @throws Exception
+     */
     public function resolve(
         string $operatingSystem
     ): AbstractFactory {

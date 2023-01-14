@@ -12,6 +12,9 @@ use Exception;
 
 class FamilyResolver
 {
+    /**
+     * @throws Exception
+     */
     public function resolve(
         string $operatingSystem
     ): FamilyServiceBundle {

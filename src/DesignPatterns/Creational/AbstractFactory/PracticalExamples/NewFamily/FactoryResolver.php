@@ -12,6 +12,9 @@ use Exception;
 
 class FactoryResolver
 {
+    /**
+     * @throws Exception
+     */
     public function resolve(
         ?string $operatingSystem,
         ?string $architecture,
