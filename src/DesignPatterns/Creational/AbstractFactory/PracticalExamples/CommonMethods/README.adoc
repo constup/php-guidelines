@@ -109,12 +109,12 @@ Interface) for Linux only. You can clearly see the problem.
 The last point is: If you are considering to use independent service classes, you are really leaning towards Service
 Bundle and away from Abstract Factory as a design pattern.
 
-=== 3.2. Service bundle supports common methods/services by definition
+=== 3.2. Service Bundle supports common methods/services by definition
 
 Unlike Abstract Factory design pattern, Service Bundle does not make any difference between services, regardless of
-whether they are related to a family or any other classification. Services described in the Task from the beginning of
-this section are easily fitting in the link:../../Alternatives/ServiceBundle/README.adoc#_3_components[components of a
-Service Bundle].
+whether they are related to a family or any other classification. Services described in Tasks from the beginning of this
+section are easily fitting in link:../../Alternatives/ServiceBundle/README.adoc#_3_components[components of a Service
+Bundle].
 
 Furthermore, the Service Bundle's main purpose is to manage bundles of services used for each family member. No
 additional architectural work is needed to add a Service as the one described in the Tasks. If you take a look at the
