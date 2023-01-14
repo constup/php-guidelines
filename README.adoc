@@ -12,9 +12,10 @@ convenience. The samples are written in pure PHP and are applicable to any PHP f
 
 == Roadmap and announcements
 
-* *06.01.2023.*:
-** *To be covered next*: Abstract Factory design pattern
-** *Afterwards*: Convert this documentation from Markdown to AsciiDoc
+* *14.01.2023.*:
+** Abstract Factory design pattern is now covered.
+** Documentation is converted to AsciiDoc.
+** Picking the next subject...
 
 == Table of contents
 
