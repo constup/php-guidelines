@@ -1,13 +1,16 @@
 = PHP Guidelines
 :stylesheet: doc/css/asciidoc-style.css
 
+image:https://img.shields.io/badge/php-8.2-purple[]
+image:https://img.shields.io/badge/symfony-6.2-green[]
+
 PHP development guidelines repository with examples. This includes, but is not limited to:
 
 * design patterns
 * SOLID principles
 * OOP principles
 
-All topics are covered with examples. The base for examples is Symfony 6 on PHP 8.1. Symfony is used just for
+All topics are covered with examples. The base for examples is Symfony 6 on PHP 8.2. Symfony is used just for
 convenience. The samples are written in pure PHP and are applicable to any PHP framework or CMS.
 
 == Roadmap and announcements
