@@ -1,0 +1,5 @@
+= Compatibility tests
+:stylesheet: ../../doc/css/asciidoc-style.css
+
+These tests are not part of examples and are here just to make sure that everything is working after `composer update`
+or bumping up the PHP version.
