@@ -177,15 +177,13 @@ responsibility principle and creates more problems than it solves. In its core, 
 decoupling mechanism with bad side effects. It also manages to achieve an exceptional level of code entanglement by
 enabling and encouraging unnecessary dependencies between unrelated classes and opening space for code duplication.
 
-'''
-
-== References
+== 8. References
 
 * [[reference-1]][1] Design Patterns: Elements of Reusable Object-Oriented Software - Erich Gamma, Richard Helm, Ralph
  Johnson, and John Vlissides - ISBN 0-201-63361-2
 * [[reference-2]][2] [https://designpatternsphp.readthedocs.io/en/latest/Creational/FactoryMethod/README.html](https://designpatternsphp.readthedocs.io/en/latest/Creational/FactoryMethod/README.html)
 * [[reference-3]][3] [https://sourcemaking.com/design_patterns/factory_method/php/1](https://sourcemaking.com/design_patterns/factory_method/php/1)
 
-== Links
+== 9. Links
 
 link:../../../../doc/table_of_contents.adoc[Contents] • link:../../../../README.adoc[Home]
