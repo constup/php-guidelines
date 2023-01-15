@@ -1,7 +1,7 @@
-FROM php:8.1
+FROM php:8.2
 
 COPY ./ /usr/src/app
-COPY --from=composer:2.3 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2.5 /usr/bin/composer /usr/bin/composer
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
 RUN apt-get update && \
