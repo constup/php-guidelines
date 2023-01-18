@@ -1,0 +1,5 @@
+= Adapter
+:stylesheet: ../../../../doc/css/asciidoc-style.css
+:toc:
+:toclevels: 4
+

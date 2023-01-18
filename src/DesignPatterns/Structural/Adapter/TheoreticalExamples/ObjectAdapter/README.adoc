@@ -1,0 +1,61 @@
+= Object Adapter
+:stylesheet: ../../../../../../doc/css/asciidoc-style.css
+:toc:
+:toclevels: 4
+
+== 1. Definition
+
+____
+*Object Adapter* uses *composition* in order to make the Adaptee methods available to a Client Service.
+____
+
+=== 1.1. Practical definition
+
+If you take a look at link:#_2_components[Components] section below and the link:../ObjectAdapter/[code example], you
+can see the following:
+
+[IMPORTANT]
+====
+*Each class which has dependencies on other classes through composition, can be called an "Object Adapter".
+Implementing an "Object Adapter" is nothing more that simply using composition in order to use other classes*.
+====
+
+This is one of the perfect examples of naming things just for the sake of naming things. Calling the most basic use of
+composition "Object Adapter", just because you have a method which deals with only one method from another class, is
+ridiculous.
+
+[#_2_components]
+== 2. Components
+
+* *Target (interface)* - (link:TargetInterface.php[`TargetInterface`]) - An Interface which Client Service uses. Can
+have one or more Concrete Classes implementing it (link:ConcreteTarget.php[`ConcreteTarget`]).
+* *Client Service* - (link:ClientService.php[`ClientService`]) - A class which needs to perform some operation from the
+`TargetInterface`.
+* *Adaptee (interface)* - (link:AdapteeInterface.php[`AdapteeThirdPartyCode`]) - An interface whose methods should be
+used in the Client Service, but are not compatible with `TargetInterface`. Can have one or more Concrete Classes
+implementing it (link:ConcreteAdaptee.php[`ConcreteAdaptee`]).
+* *Adapter* - (link:Adapter.php[`Adapter`]) - A class which has an instance of `AdapteeInterface` as its dependency.
+It implements teh `TargetInterface`, since it's intended to be used in the `ClientService` just like any other concrete
+implementation of the `TargetInterface`. The method which `ClientService` uses from the `TargetInterface` uses a method
+from the `AdapteeInterface` - thus the idea of calling this an "Adapter".
+
+[NOTE]
+====
+You *can* use classes instead of the `AdapteeInterface` and `TragetInterface`, but the moment you need to have an
+option between a couple of concrete implementations of those classes, you will need to convert these to Interfaces
+anyway.
+====
+
+== 3. Running the examples
+
+The following CLI commands are available:
+
+* Theoretical examples:
+** Docker: `docker exec -it constup_php_guidelines php /usr/src/app/bin/console design-patterns:adapter:theoretical:object-adapter`
+** CLI: `php bin/console design-patterns:adapter:theoretical:object-adapter`
+
+== 4. Links
+
+link:../../../../../../doc/table_of_contents.adoc[Contents]
+• link:../../../../../../README.adoc[Home]
+• link:../../[Adapter design pattern]

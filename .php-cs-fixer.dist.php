@@ -53,7 +53,7 @@ return $config
         'echo_tag_syntax' => [
             'format' => 'long'
         ],
-        'no_trailing_comma_in_singleline_array' => true,
+        'no_trailing_comma_in_singleline' => true,
         //risky 'no_unneeded_final_method' => true,
         'no_unused_imports' => true,
         'no_useless_else' => true,
