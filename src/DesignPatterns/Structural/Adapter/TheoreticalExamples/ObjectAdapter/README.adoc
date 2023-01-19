@@ -65,7 +65,7 @@ The following CLI commands are available:
 ** Docker: `docker exec -it constup_php_guidelines php /usr/src/app/bin/console design-patterns:adapter:theoretical:object-adapter`
 ** CLI: `php bin/console design-patterns:adapter:theoretical:object-adapter`
 
-== 4. Links
+== 5. Links
 
 link:../../../../../../doc/table_of_contents.adoc[Contents]
 • link:../../../../../../README.adoc[Home]
