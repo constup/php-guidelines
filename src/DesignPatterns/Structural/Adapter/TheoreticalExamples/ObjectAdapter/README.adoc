@@ -6,23 +6,17 @@
 == 1. Definition
 
 ____
-*Object Adapter* uses *composition* in order to make the Adaptee methods available to a Client Service.
+*Object Adapter* uses *composition* in order to make the Adaptee methods available to a Client Service. The Adapter uses
+the name of the method which Client Service can accept (which is also present in the Target Interface) and calls the
+Adaptee Interface's method in it.
 ____
 
 === 1.1. Practical definition
 
-If you take a look at link:#_2_components[Components] section below and the link:../ObjectAdapter/[code example], you
-can see the following:
-
-[IMPORTANT]
-====
-*Each class which has dependencies on other classes through composition, can be called an "Object Adapter".
-Implementing an "Object Adapter" is nothing more that simply using composition in order to use other classes*.
-====
-
-This is one of the perfect examples of naming things just for the sake of naming things. Calling the most basic use of
-composition "Object Adapter", just because you have a method which deals with only one method from another class, is
-ridiculous.
+____
+You can name the functions however you like. If you need to use a method from another Interface, which has a different
+name and parameters, you can use composition and create a method, then call the desired method in it.
+____
 
 [#_2_components]
 == 2. Components
@@ -46,7 +40,24 @@ option between a couple of concrete implementations of those classes, you will n
 anyway.
 ====
 
-== 3. Running the examples
+== 3. Problems
+
+=== 3.1. Naming
+
+If you take a look at link:#_2_components[2. Components] section and analyze the link:../ObjectAdapter/[code example],
+you can see the following:
+
+[IMPORTANT]
+====
+Each class which has dependencies on other classes through composition, can be called an "Object Adapter", in one way or
+another.
+====
+
+This is one of the perfect examples of naming things just for the sake of naming things. Calling the most basic use of
+composition "Object Adapter", is ridiculous. The only justification of naming this is to maybe separate it from other
+ways of implementing an Adapter - in which case a name *"Simple Composition Adapter""* is much more suitable.
+
+== 4. Running the examples
 
 The following CLI commands are available:
 
