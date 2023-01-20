@@ -7,7 +7,7 @@
 
 This example proves the claim that marking a class `final` is functionally useless.
 
-== 2. File contents
+== 2. Components
 
 * link:./ComponentInterface.php[`ComponentInterface`] : Each concrete feature class in this example implements this
  interface.
