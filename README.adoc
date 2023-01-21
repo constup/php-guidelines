@@ -60,8 +60,8 @@ can clone this repository and use it on your local machine.
 There are two ways of running the examples:
 
 * On your local machine
-** You need to have PHP 8.1 installed and active. Check it by running `php -v`.
-** Your local PHP installation must be able to run Symfony 6.
+** You need to have PHP 8.2 installed and active. Check it by running `php -v`.
+** Your local PHP installation must be able to run Symfony 6.2.
 ** Run (in root directory of the cloned repository):
 [source,shell]
 ----
