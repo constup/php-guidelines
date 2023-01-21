@@ -32,10 +32,10 @@ methods should be used in the Client Service, but are not compatible with `Targe
 can have one or more Concrete Classes implementing it (link:ConcreteAdaptee.php[`ConcreteAdaptee`]). Note that the
 _Adaptee_ can be a part of a third party (Composer) library and that you might not have a choice whether it will be a
 class or an interface.
-* *Adapter* - (link:Adapter.php[`Adapter`]) - A class which has an instance of `AdapteeInterface` as its dependency.
-It implements the `TargetInterface`, since it's intended to be used in the `ClientService` just like any other concrete
-implementation of the `TargetInterface`. The method, which `ClientService` calls from the `TargetInterface`,
-uses a method from the `AdapteeInterface` - thus the idea of calling this an "Adapter".
+* *Adapter* - (link:Adapter.php[`Adapter`]) - A class which has an instance of `AdapteeInterface` as its (private)
+dependency.It implements the `TargetInterface`, since it's intended to be used in the `ClientService` just like any
+other concrete implementation of the `TargetInterface`. The method, which `ClientService` calls from the
+`TargetInterface`, uses a method from the `AdapteeInterface` - thus the idea of calling this an "Adapter".
 
 == 3. Problems
 
