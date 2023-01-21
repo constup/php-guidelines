@@ -20,8 +20,10 @@ Since multiple inheritance is not supported in PHP, one workaround is listed in 
 which are thus available to be adapted. It also implements the `TargetInterface`, in order to be compatible with what
 `ClientService` can use.
 
-The example is available at link:WorkingExample/[`WorkingExample`] and the command which runs it is available at
-link:../../../../../Command/DesignPatterns/Structural/Adapter/Theoretical/ClassAdapterCommand.php[`ClassAdapterCommand`].
+The example is available at link:AdapterExtendsAdaptee/[`AdapterExtendsAdaptee`] and the command which runs it is
+available at
+link:../../../../../Command/DesignPatterns/Structural/Adapter/Theoretical/ClassAdapterExtendsAdapteeCommand.php[
+`ClassAdapterExtendsAdapteeCommand`].
 
 This looks reasonable and simple enough, right? Wrong.
 
@@ -35,7 +37,8 @@ code execution.
 ====
 
 Take a look at the link:AmbiguousCall/[`AmbiguousCall`] example with accompanying
-link:../../../../../Command/DesignPatterns/Structural/Adapter/Theoretical/ClassAdapterAmbiguousCodeCommand.php[`ClassAdapterAmbiguousCodeCommand`].
+link:../../../../../Command/DesignPatterns/Structural/Adapter/Theoretical/ClassAdapterAmbiguousCodeCommand.php[
+`ClassAdapterAmbiguousCodeCommand`].
 This example demonstrates ambiguous polymorphic code usage by accessing an Adaptee's method (`specificRequest()`), which
 is not present in original Concrete Classes of the `TargetInterface`. The method can be used in `ClientService`, but
 only if the instance of `Adapter` is passed to `ClientService->doSomething()`. If any other concrete implementation of
@@ -63,7 +66,6 @@ the rabbit hole.
 
 Even if the previous point was not enough to deter you from using it, this "workaround" also extends a Concrete Adaptee
 (class) directly - which means that it does not support an Adaptee to be an interface.
-link:../ObjectAdapter/[`ObjectAdapter`] does.
 
 == 3. Conclusions
 
@@ -77,8 +79,8 @@ Class Adapter can not be implemented in PHP. Using hacks to implement it is dang
 The following CLI commands are available:
 
 * Theoretical example, code with no error:
-** Docker: `docker exec -it constup_php_guidelines php /usr/src/app/bin/console design-patterns:adapter:theoretical:class-adapter`
-** CLI: `php bin/console design-patterns:adapter:theoretical:class-adapter`
+** Docker: `docker exec -it constup_php_guidelines php /usr/src/app/bin/console design-patterns:adapter:theoretical:class-adapter:adapter-extends-adaptee`
+** CLI: `php bin/console design-patterns:adapter:theoretical:class-adapter:adapter-extends-adaptee`
 * Theoretical example with ambiguous polymorphic code which throws an error and breaks the application:
 ** Docker: `docker exec -it constup_php_guidelines php /usr/src/app/bin/console design-patterns:adapter:theoretical:class-adapter:ambiguous-code`
 ** CLI: `php bin/console design-patterns:adapter:theoretical:class-adapter:ambiguous-code`

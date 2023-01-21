@@ -10,6 +10,10 @@ use Symfony\Component\Console\Tester\CommandTester;
 
 class CommandsTest extends KernelTestCase
 {
+    const EXPECTED_TO_FAIL_COMMANDS = [
+        'design-patterns:adapter:theoretical:class-adapter:ambiguous-code'
+    ];
+
     /**
      * Runs through all commands and tests if they are successful.
      *
@@ -23,9 +27,12 @@ class CommandsTest extends KernelTestCase
         $allCommands = $application->all('design-patterns');
 
         foreach ($allCommands as $command) {
-            $commandTester = new CommandTester($command);
-            $commandTester->execute([]);
-            $commandTester->assertCommandIsSuccessful();
+            if (!in_array($command->getName(), self::EXPECTED_TO_FAIL_COMMANDS)) {
+                echo "Running: " . $command->getName();
+                $commandTester = new CommandTester($command);
+                $commandTester->execute([]);
+                $commandTester->assertCommandIsSuccessful();
+            }
         }
     }
 }
