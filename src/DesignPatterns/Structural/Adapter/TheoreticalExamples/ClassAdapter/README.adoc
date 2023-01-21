@@ -1,0 +1,82 @@
+= Class Adapter
+:stylesheet: ../../../../../../doc/css/asciidoc-style.css
+:toc:
+:toclevels: 4
+
+== 1. Definition
+
+____
+*Class Adapter* uses *multiple inheritance* in order to make the Adaptee methods available to a Client Service.
+Multiple inheritance *is not available in PHP*, thus Class Adapter can not be implemented in PHP.
+____
+
+=== 2. Claiming to be a workaround
+
+Since multiple inheritance is not supported in PHP, one workaround is listed in various books and online resources.
+
+=== 2.1. `Adapter` extends the `ConcreteAdaptee` and implements the `TargetInterface`
+
+`Adapter` class is extending the `ConcreteAdaptee` class. This way it inherits the methods from the `ConcreteAdaptee`,
+which are thus available to be adapted. It also implements the _Target Interface_, in order to be compatible with what
+`ClientService` can use.
+
+The example is available at link:WorkingExample/[`WorkingExample`] and the command which runs it is available at
+link:../../../../../Command/DesignPatterns/Structural/Adapter/Theoretical/ClassAdapterCommand.php[`ClassAdapterCommand`].
+
+This looks reasonable and simple enough, right? Wrong.
+
+==== 2.1.1. Ambiguous polymorphic code
+
+[WARNING]
+====
+The consequence of having direct access to `ConcreteAdaptee` method in the `Adapter` class and the fact that the class
+is being used in `ClientService` through `TargetInterface` creates a very dangerous situation - ambiguous polymorphic
+code execution.
+====
+
+Take a look at the link:AmbiguousCall/[`AmbiguousCall`] example with accompanying
+link:../../../../../Command/DesignPatterns/Structural/Adapter/Theoretical/ClassAdapterAmbiguousCodeCommand.php[`ClassAdapterAmbiguousCodeCommand`].
+This example demonstrates ambiguous polymorphic code usage by accessing an Adaptee's method (`specificRequest()`), which
+is not present in original Concrete Classes of the `TargetInterface`. The method can be used in `ClientService`, but
+only if the instance of `Adapter` is passed to `ClientService->doSomething()`. If any other concrete implementation of
+the `TargetInterface` is passed, this code will throw an error. The worst part of this error is: PHP accepts this method
+call and will only throw an error at runtime. The only way this problem could be detected is through an IDE or a static
+code analysis tool, but that also depends on both the tool and its settings.
+
+Another very dangerous property of using this hack implementation of the Class Adapter is that all the code written
+before the actual error is thrown - will be executed. If that code changes any external data (for example: writes to a
+database, or makes an API call to a third party application), you will have corrupted data and potentially dangerous
+situations, including severe security risks.
+
+[IMPORTANT]
+====
+The problems above might be mitigated - by investing time and effort to build error and edge case handling just because
+of the decision to use a poorly though out hack which is supposed to replace a feature (multiple inheritance) which does
+not exist in PHP as a language. Also take into account that the implemented mitigation methods, apart from needlessly
+complicating the code and wasting resources, might have problems and edge cases of their own leading you further down
+the rabbit hole.
+====
+
+== 3. Conclusions
+
+[CAUTION]
+====
+Class Adapter can not be implemented in PHP. Using hacks to implement it is dangerous and is not recommended.
+====
+
+== 4. Running the examples
+
+The following CLI commands are available:
+
+* Theoretical example, code with no error:
+** Docker: `docker exec -it constup_php_guidelines php /usr/src/app/bin/console design-patterns:adapter:theoretical:class-adapter`
+** CLI: `php bin/console design-patterns:adapter:theoretical:class-adapter`
+* Theoretical example with ambiguous polymorphic code which throws an error and breaks the application:
+** Docker: `docker exec -it constup_php_guidelines php /usr/src/app/bin/console design-patterns:adapter:theoretical:class-adapter:ambiguous-code`
+** CLI: `php bin/console design-patterns:adapter:theoretical:class-adapter:ambiguous-code`
+
+== 5. Links
+
+link:../../../../../../doc/table_of_contents.adoc[Contents]
+• link:../../../../../../README.adoc[Home]
+• link:../../[Adapter design pattern]
