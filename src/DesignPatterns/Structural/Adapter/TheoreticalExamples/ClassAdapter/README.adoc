@@ -17,7 +17,7 @@ Since multiple inheritance is not supported in PHP, one workaround is listed in 
 === 2.1. `Adapter` extends the `ConcreteAdaptee` and implements the `TargetInterface`
 
 `Adapter` class is extending the `ConcreteAdaptee` class. This way it inherits the methods from the `ConcreteAdaptee`,
-which are thus available to be adapted. It also implements the _Target Interface_, in order to be compatible with what
+which are thus available to be adapted. It also implements the `TargetInterface`, in order to be compatible with what
 `ClientService` can use.
 
 The example is available at link:WorkingExample/[`WorkingExample`] and the command which runs it is available at
