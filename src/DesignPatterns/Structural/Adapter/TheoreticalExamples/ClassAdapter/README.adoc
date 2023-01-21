@@ -59,6 +59,12 @@ complicating the code and wasting resources, might have problems and edge cases 
 the rabbit hole.
 ====
 
+==== 2.1.2. Adaptee as an interface is not supported
+
+Even if the previous point was not enough to deter you from using it, this "workaround" also extends a Concrete Adaptee
+(class) directly - which means that it does not support an Adaptee to be an interface.
+link:../ObjectAdapter/[`ObjectAdapter`] does.
+
 == 3. Conclusions
 
 [CAUTION]
