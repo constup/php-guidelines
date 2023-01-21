@@ -7,7 +7,7 @@
 
 ____
 *Object Adapter* uses *composition* in order to make the Adaptee methods available to a Client Service. The Adapter uses
-the name of the method which Client Service can accept (which is also present in the Target Interface) and calls the
+the name of the method which Client Service can accept (which is also present in the Target Interface) and calls an
 Adaptee's method in it.
 ____
 
