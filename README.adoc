@@ -3,6 +3,9 @@
 
 image:https://img.shields.io/badge/php-8.2-purple[]
 image:https://img.shields.io/badge/symfony-6.2-green[]
+image:https://img.shields.io/badge/Docker-20.10-blue[]
+image:https://img.shields.io/badge/docker--compose-2.13-blue[]
+
 
 PHP development guidelines repository with examples. This includes, but is not limited to:
 
@@ -10,8 +13,18 @@ PHP development guidelines repository with examples. This includes, but is not l
 * SOLID principles
 * OOP principles
 
-All topics are covered with examples. The base for examples is Symfony 6 on PHP 8.2. Symfony is used just for
+All topics are covered with examples. The base for examples is Symfony 6.2 on PHP 8.2. Symfony is used just for
 convenience. The samples are written in pure PHP and are applicable to any PHP framework or CMS.
+
+[IMPORTANT]
+====
+*This is not yet another repository which participates in the cacophony of those who simply rewrite the theory and add a
+couple of examples. The purpose of this repository is to go deeper and actually analyze and challenge design patterns,
+OOP and other concepts/principles, and to provide objectively better alternatives where applicable.*
+
+*All topics covered here will have a set of examples which you can run immediately - either by CLI (Docker included) or
+by running implemented PHPUnit tests.*
+====
 
 == Roadmap and announcements
 
