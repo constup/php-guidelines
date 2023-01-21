@@ -28,6 +28,7 @@
 ****** link:../src/DesignPatterns/Creational/AbstractFactory/Alternatives/ServiceBundle/CommonMethods/[Common methods]
 ** Structural
 *** link:../src/DesignPatterns/Structural/Adapter/[Adapter]
+**** link:../src/DesignPatterns/Structural/Adapter/TheoreticalExamples/ClassAdapter/[Class Adapter]
 **** link:../src/DesignPatterns/Structural/Adapter/TheoreticalExamples/ObjectAdapter/[Object Adapter]
 * link:../src/WarningSigns[Warning signs]
 ** link:../src/WarningSigns/FinalClasses[Final classes]
