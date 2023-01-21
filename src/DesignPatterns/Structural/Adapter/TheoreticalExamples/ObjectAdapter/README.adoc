@@ -37,13 +37,6 @@ It implements the `TargetInterface`, since it's intended to be used in the `Clie
 implementation of the `TargetInterface`. The method, which `ClientService` calls from the `TargetInterface`,
 uses a method from the `AdapteeInterface` - thus the idea of calling this an "Adapter".
 
-[NOTE]
-====
-You *can* use classes instead of the `AdapteeInterface` and `TragetInterface`, but the moment you need to have an
-option between a couple of concrete implementations of those classes, you will need to convert these to Interfaces
-anyway.
-====
-
 == 3. Problems
 
 === 3.1. Naming
