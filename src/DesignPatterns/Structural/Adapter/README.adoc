@@ -3,3 +3,54 @@
 :toc:
 :toclevels: 4
 
+== 1. Definition
+
+____
+Converts the interface of a class into another interface client expects. Adapter lets classes work together that
+couldn't otherwise because of incompatible interfaces. [<<reference-1,1>>]
+____
+
+Or, in other words:
+____
+Use (in `ClientService`) any class (example: `ConcreteAdaptee`) implementing some interface (`AdapteeInterface`) as if
+it implements another interface (`TargetInterface`) which is not compatible with the interface of that class
+(`AdapteeInterface`).
+____
+
+== 2. Components
+
+* *Adaptee* class or interface - A class or an interface which you want to use, but is incompatible with what the rest
+of your code can use. This class or interface must not be modified (in the context of implementing an adapter). The most
+obvious example is a class or an interface which is imported from a 3rd party (Composer) library and which you can not
+modify, but have to use it in a _Client Service_ through an incompatible interface. Also note that you don't generally
+have control of whether the _Adaptee_ is a class or interface - that might be defined by a third party library which
+you are trying to use.
+* *Target* interface - An interface which _Client Service_ uses to perform some operations and run business logic. The
+Adaptee must be adapted to be compatible with this interface. Can have one or more _Concrete Classes_ implementing it.
+_Adapter_ must also implement this interface.
+* *Client Service* class - A class which uses a concrete implementation of the _Target_ interface in order to perform
+some operations and run business logic.
+* **Adapter** class - A class which makes the _Adaptee_ compatible with the _Target interface_. Adapter class must be
+fully compatible with the _Target interface_, because _Client Service_ expects it to be. In case of a two-way adapter
+(explained and demonstrated later), it should also be fully compatible with the _Adaptee_ as well.
+
+== 3. Types of adapters and implementation approaches
+
+There are several types of adapters defined in theory [<<reference-1, 1>>]:
+
+* link:TheoreticalExamples/ObjectAdapter/[Object Adapter] - The only possible way to implement the Adapter in PHP.
+* link:TheoreticalExamples/ClassAdapter/[Class Adapter] - Not possible to implement in PHP, because it requires multiple
+inheritance. Covered by this repository simply because there are examples online which claim to provide a workaround,
+which is covered on the linked page (with examples, of course).
+* Two-way Adapter - Not possible to implement in PHP, because it requires multiple inheritance. Not covered in this
+repository.
+
+== 4. References
+
+* [[reference-1]][1] Design Patterns: Elements of Reusable Object-Oriented Software - Erich Gamma, Richard Helm, Ralph
+Johnson, and John Vlissides - ISBN 0-201-63361-2
+
+== 5. Links
+
+link:../../../../doc/table_of_contents.adoc[Contents]
+• link:../../../../README.adoc[Home]
