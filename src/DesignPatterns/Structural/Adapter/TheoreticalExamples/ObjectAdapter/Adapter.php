@@ -7,7 +7,7 @@ namespace App\DesignPatterns\Structural\Adapter\TheoreticalExamples\ObjectAdapte
 class Adapter implements TargetInterface
 {
     public function __construct(
-        public readonly AdapteeInterface $adaptee
+        private readonly AdapteeInterface $adaptee
     ) {
     }
 
