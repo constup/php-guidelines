@@ -3,6 +3,9 @@
 
 image:https://img.shields.io/badge/php-8.2-purple[]
 image:https://img.shields.io/badge/symfony-6.2-green[]
+image:https://img.shields.io/badge/Docker-20.10-blue[]
+image:https://img.shields.io/badge/docker--compose-2.13-blue[]
+
 
 PHP development guidelines repository with examples. This includes, but is not limited to:
 
@@ -10,17 +13,31 @@ PHP development guidelines repository with examples. This includes, but is not l
 * SOLID principles
 * OOP principles
 
-All topics are covered with examples. The base for examples is Symfony 6 on PHP 8.2. Symfony is used just for
+All topics are covered with examples. The base for examples is Symfony 6.2 on PHP 8.2. Symfony is used just for
 convenience. The samples are written in pure PHP and are applicable to any PHP framework or CMS.
+
+[IMPORTANT]
+====
+*This is not yet another repository which participates in the cacophony of those who simply rewrite the theory and add a
+couple of examples. The purpose of this repository is to go deeper and actually analyze and challenge design patterns,
+OOP and other concepts/principles, and to provide objectively better alternatives where applicable.*
+
+*All topics covered here will have a set of examples which you can run immediately - either by CLI (Docker included) or
+by running implemented PHPUnit tests.*
+====
 
 == Roadmap and announcements
 
-* *16.01.2023.*:
-** Next up: Adapter design pattern
+* *22.01.2023.*:
+** Finished Adapter design pattern
+** Next up: Decorator design pattern
 
 == Table of contents
 
+[IMPORTANT]
+====
 link:./doc/table_of_contents.adoc[Table of contents] is available on a separate page.
+====
 
 == How to use this repository
 
@@ -44,8 +61,8 @@ can clone this repository and use it on your local machine.
 There are two ways of running the examples:
 
 * On your local machine
-** You need to have PHP 8.1 installed and active. Check it by running `php -v`.
-** Your local PHP installation must be able to run Symfony 6.
+** You need to have PHP 8.2 installed and active. Check it by running `php -v`.
+** Your local PHP installation must be able to run Symfony 6.2.
 ** Run (in root directory of the cloned repository):
 [source,shell]
 ----

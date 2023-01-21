@@ -10,8 +10,7 @@ class Factory1 implements FactoryInterface
         string $className,
         string $stringProperty,
         int $integerProperty
-    ): ProductInterface
-    {
+    ): ProductInterface {
         return new $className($stringProperty, $integerProperty);
     }
 

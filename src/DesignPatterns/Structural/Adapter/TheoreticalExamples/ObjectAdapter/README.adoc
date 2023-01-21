@@ -1,0 +1,69 @@
+= Object Adapter
+:stylesheet: ../../../../../../doc/css/asciidoc-style.css
+:toc:
+:toclevels: 4
+
+== 1. Definition
+
+____
+*Object Adapter* uses *composition* in order to make the Adaptee methods available to a Client Service. The Adapter uses
+the name of the method which Client Service can accept (which is also present in the Target Interface) and calls an
+Adaptee's method in it.
+____
+
+=== 1.1. Practical definition
+
+____
+You can name the functions however you like. If you need to use a method from another Interface, which has a different
+name and parameters, you can use composition and create a method, then call the desired method in it.
+____
+
+[#_2_components]
+== 2. Components
+
+* *Target (interface)* - (link:TargetInterface.php[`TargetInterface`]) - An Interface which Client Service uses. Can
+have one or more Concrete Classes implementing it (link:ConcreteTarget.php[`ConcreteTarget`]).
+link:Adapter.php[`Adapter`] must also implement this interface, because link:ClientService.php[`Client Service`] expects
+it.
+* *Client Service* - (link:ClientService.php[`ClientService`]) - A class which needs to perform some operation from the
+`TargetInterface`.
+* *Adaptee (class or interface)* - (link:AdapteeInterface.php[`AdapteeThirdPartyCode`]) - A class or an interface whose
+methods should be used in the Client Service, but are not compatible with `TargetInterface`. If it's an interface, it
+can have one or more Concrete Classes implementing it (link:ConcreteAdaptee.php[`ConcreteAdaptee`]). Note that the
+_Adaptee_ can be a part of a third party (Composer) library and that you might not have a choice whether it will be a
+class or an interface.
+* *Adapter* - (link:Adapter.php[`Adapter`]) - A class which has an instance of `AdapteeInterface` as its (private)
+dependency.It implements the `TargetInterface`, since it's intended to be used in the `ClientService` just like any
+other concrete implementation of the `TargetInterface`. The method, which `ClientService` calls from the
+`TargetInterface`, uses a method from the `AdapteeInterface` - thus the idea of calling this an "Adapter".
+
+== 3. Problems
+
+=== 3.1. Naming
+
+If you take a look at link:#_2_components[2. Components] section and analyze the link:../ObjectAdapter/[code example],
+you can see the following:
+
+[IMPORTANT]
+====
+Each class which has dependencies on other classes through composition, can be called an "Object Adapter", in one way or
+another.
+====
+
+This is one of the perfect examples of naming things just for the sake of naming things. Calling the most basic use of
+composition "Object Adapter", is ridiculous. The only justification of naming this is to maybe separate it from other
+ways of implementing an Adapter - in which case a name *"Simple Composition Adapter""* is much more suitable.
+
+== 4. Running the examples
+
+The following CLI commands are available:
+
+* Theoretical examples:
+** Docker: `docker exec -it constup_php_guidelines php /usr/src/app/bin/console design-patterns:adapter:theoretical:object-adapter`
+** CLI: `php bin/console design-patterns:adapter:theoretical:object-adapter`
+
+== 5. Links
+
+link:../../../../../../doc/table_of_contents.adoc[Contents]
+• link:../../../../../../README.adoc[Home]
+• link:../../[Adapter design pattern]
