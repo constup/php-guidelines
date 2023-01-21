@@ -34,8 +34,8 @@ _Adaptee_ can be a part of a third party (Composer) library and that you might n
 class or an interface.
 * *Adapter* - (link:Adapter.php[`Adapter`]) - A class which has an instance of `AdapteeInterface` as its dependency.
 It implements the `TargetInterface`, since it's intended to be used in the `ClientService` just like any other concrete
-implementation of the `TargetInterface`. The method which `ClientService` uses from the `TargetInterface` uses a method
-from the `AdapteeInterface` - thus the idea of calling this an "Adapter".
+implementation of the `TargetInterface`. The method, which `ClientService` calls from the `TargetInterface`,
+uses a method from the `AdapteeInterface` - thus the idea of calling this an "Adapter".
 
 [NOTE]
 ====
