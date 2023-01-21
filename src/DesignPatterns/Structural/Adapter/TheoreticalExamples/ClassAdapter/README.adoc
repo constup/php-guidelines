@@ -10,7 +10,7 @@ ____
 Multiple inheritance *is not available in PHP*, thus Class Adapter can not be implemented in PHP.
 ____
 
-=== 2. Claiming to be a workaround
+== 2. Claiming to be a workaround
 
 Since multiple inheritance is not supported in PHP, one workaround is listed in various books and online resources.
 
