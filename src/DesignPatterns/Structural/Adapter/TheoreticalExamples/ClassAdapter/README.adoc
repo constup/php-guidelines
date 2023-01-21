@@ -29,7 +29,7 @@ This looks reasonable and simple enough, right? Wrong.
 
 [WARNING]
 ====
-The consequence of having direct access to `ConcreteAdaptee` method in the `Adapter` class and the fact that the class
+The consequence of having direct access to `ConcreteAdaptee` methods in the `Adapter` class and the fact that the class
 is being used in `ClientService` through `TargetInterface` creates a very dangerous situation - ambiguous polymorphic
 code execution.
 ====
