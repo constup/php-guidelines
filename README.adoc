@@ -28,8 +28,9 @@ by running implemented PHPUnit tests.*
 
 == Roadmap and announcements
 
-* *16.01.2023.*:
-** Next up: Adapter design pattern
+* *22.01.2023.*:
+** Finished Adapter design pattern
+** Next up: Decorator design pattern
 
 == Table of contents
 
