@@ -50,7 +50,7 @@ Another very dangerous property of using this hack implementation of the Class A
 before the actual error is thrown - will be executed. If that code changes any external data (for example: writes to a
 database, or makes an API call to a third party application), you will have corrupted data and potentially dangerous
 situations, including severe security risks. This is because the code which didn't execute, but threw an error instead,
-might contain code necessary to finish the flow the applications is designed to run, complete modifications of stored
+might contain code necessary to finish the flow the application is designed to run, complete modifications of stored
 data and/or make additional API calls to third party applications.
 
 [IMPORTANT]
