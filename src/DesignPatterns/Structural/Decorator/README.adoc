@@ -1,0 +1,36 @@
+= Decorator design pattern
+:stylesheet: ../../../../doc/css/asciidoc-style.css
+:toc:
+:toclevels: 4
+
+== 1. Definition
+
+____
+Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing
+for extending functionality.[<<reference-1,1>>]
+____
+
+Or, in other words:
+____
+When you use composition while extending an interface of the object your class is depending on, you can add a function
+to a class and expand its functionality while keeping the compatibility with the interface.
+____
+
+== 2. Components
+
+* *Component* interface - An interface of a component to which you want to add a method.
+* *Concrete component* class - Concrete class which implements the _Component interface_.
+* *Decorator* class - A class which implements the _Component interface_ and at the same time has a property of the same
+type (_ComponentInterface_)
+* *Concrete Decorator* class - Extends _Decorator_
+
+
+== 4. References
+
+* [[reference-1]][1] Design Patterns: Elements of Reusable Object-Oriented Software - Erich Gamma, Richard Helm, Ralph
+Johnson, and John Vlissides - ISBN 0-201-63361-2
+
+== 5. Links
+
+link:../../../../doc/table_of_contents.adoc[Contents]
+• link:../../../../README.adoc[Home]
